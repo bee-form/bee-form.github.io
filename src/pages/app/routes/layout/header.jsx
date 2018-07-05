@@ -19,6 +19,11 @@ export class Header extends FComponent {
                 name: "documentation",
                 to: "/docs",
             },
+            {
+                label: "Examples",
+                name: "examples",
+                href: "https://bee-form.github.io/bee-form-react-demo/",
+            },
         ];
 
         return (
@@ -26,22 +31,28 @@ export class Header extends FComponent {
                 <div className="line">
                     <div className="left">
                         <div className="icon">
-                            Bee Form
+                            BF
                         </div>
 
+
                         {leftNavItems.map((navItem) => (
-                            <Link
-                                className={cln("nav-item", {active: active === navItem.name})}
-                                to={navItem.to}
-                            >
-                                {navItem.label}
-                            </Link>
+                            React.createElement(
+                                navItem.to ? Link : "a",
+                                {
+                                    className: cln("nav-item", {active: active === navItem.name}),
+                                    to: navItem.to,
+                                    href: navItem.href,
+                                },
+                                navItem.label
+                            )
                         ))}
 
                     </div>
 
                     <div className="right">
-
+                        <a>
+                            <i className="fab fa-github"/>
+                        </a>
                     </div>
                 </div>
             </div>
