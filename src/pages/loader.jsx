@@ -1,5 +1,5 @@
 import {PagesApp} from "./app/pages-app";
 
-ReactDOM.render((
-    <PagesApp style={{height: "100%"}} />
+ReactDOM.hydrate((
+    <PagesApp />
 ), document.getElementById("app-container"));

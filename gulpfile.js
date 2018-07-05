@@ -1,4 +1,8 @@
+require("jsx-node").install();
+global.h = require("react").createElement;
+
 var gulp = require("gulp");
+const Exporting = require("./src/exporting/exporting.jsx").Exporting;
 var spawn = require('child_process').spawn;
 
 function createStylusCompiler() {
@@ -47,4 +51,14 @@ gulp.task("dev", ["build:watch"], () => {
     ServerCore.start({
         port: 6633,
     });
+});
+
+gulp.task("test-deploy", async () => {
+
+
+    gulp.src("./dist/**").pipe(gulp.dest("../pages-deploy"))
+    gulp.src("./src/server/public/assets/**").pipe(gulp.dest("../pages-deploy/assets"))
+    cmd("http-server ../pages-deploy");
+
+    await Exporting.doExport("../pages-deploy", "./src/server/public/index.html");
 });

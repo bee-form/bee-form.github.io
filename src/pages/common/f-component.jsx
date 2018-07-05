@@ -1,3 +1,5 @@
+import React from "react";
+
 export class FComponent extends React.Component {
     onUnmounts = [];
     onChanges = [];

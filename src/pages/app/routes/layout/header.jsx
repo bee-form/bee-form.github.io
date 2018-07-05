@@ -34,11 +34,11 @@ export class Header extends FComponent {
                             BF
                         </div>
 
-
                         {leftNavItems.map((navItem) => (
                             React.createElement(
                                 navItem.to ? Link : "a",
                                 {
+                                    key: navItem.name,
                                     className: cln("nav-item", {active: active === navItem.name}),
                                     to: navItem.to,
                                     href: navItem.href,
@@ -46,7 +46,6 @@ export class Header extends FComponent {
                                 navItem.label
                             )
                         ))}
-
                     </div>
 
                     <div className="right">
