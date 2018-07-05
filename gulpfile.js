@@ -1,15 +1,14 @@
 var gulp = require("gulp");
 var spawn = require('child_process').spawn;
-const fs = require("fs");
 
 function createStylusCompiler() {
     return require("./src/build/stylus-compiler").createCompiler({
         container: {
-            dir: `${__dirname}/src/editor/common/styl`,
+            dir: `${__dirname}/src/pages/common/styl`,
             file: "style.styl",
         },
         lookupDirs: [
-            `${__dirname}/src/editor`
+            `${__dirname}/src/pages`
         ],
         distDir: `${__dirname}/dist/css`,
     });
