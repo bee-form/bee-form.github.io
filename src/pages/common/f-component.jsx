@@ -29,7 +29,7 @@ export class FComponent extends React.Component {
             super.setState(newState, cb);
         } else {
             this.state = Object.assign(this.state, newState);
-            cb();
+            cb && cb();
         }
     }
 

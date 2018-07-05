@@ -57,6 +57,7 @@ gulp.task("test-deploy", async () => {
 
 
     gulp.src("./dist/**").pipe(gulp.dest("../pages-deploy"))
+    gulp.src("./src/content/**").pipe(gulp.dest("../pages-deploy"))
     gulp.src("./src/server/public/assets/**").pipe(gulp.dest("../pages-deploy/assets"))
     cmd("http-server ../pages-deploy");
 
