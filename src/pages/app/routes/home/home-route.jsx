@@ -2,9 +2,9 @@ import cln from "classnames";
 import React from "react";
 import {FComponent} from "../../../common/f-component";
 import {Layout} from "../layout/layout";
+import {Link} from "react-router-dom";
 
 export class HomeRoute extends FComponent {
-
     render() {
 
         return (
@@ -32,6 +32,9 @@ export class HomeRoute extends FComponent {
                             objects.
                         </p>
 
+                        <div className="buttons">
+                            <Link to={"/docs"} className="button">Get started</Link>
+                        </div>
 
                     </div>
 
