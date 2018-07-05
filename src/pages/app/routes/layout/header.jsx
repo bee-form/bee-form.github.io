@@ -50,7 +50,7 @@ export class Header extends FComponent {
                     </div>
 
                     <div className="right">
-                        <a>
+                        <a href="https://github.com/bee-form" target="_blank">
                             <i className="fab fa-github"/>
                         </a>
                     </div>

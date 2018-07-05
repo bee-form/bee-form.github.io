@@ -6,16 +6,15 @@ import {Header} from "./header";
 export class Layout extends FComponent {
 
     render() {
-        const {children, active} = this.props;
+        const {children, active, className} = this.props;
         return (
             <div className="layout">
                 <Header active={active}/>
 
-                <div className="content">
-
+                <div className={cln("content", className)}>
+                    {children}
                 </div>
 
-                {children}
             </div>
         );
     }

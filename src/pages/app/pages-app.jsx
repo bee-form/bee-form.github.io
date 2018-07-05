@@ -5,12 +5,6 @@ import {HomeRoute} from "./routes/home/home-route";
 
 export class PagesApp extends FComponent {
 
-
-    constructor(props, context) {
-        super(props, context);
-
-    }
-
     render() {
         return (
             <BrowserRouter>
