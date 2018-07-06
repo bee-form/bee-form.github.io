@@ -33,12 +33,18 @@
     padding 20px 0;
 
     border-bottom 1px solid rgba(black, 0.1);
-    @media screen and (min-width: 768px) {
-      border-bottom none;
-    }
 
     &:not(.expand) {
       display none;
+    }
+
+    @media screen and (min-width: 768px) {
+      border-bottom none;
+
+      &:not(.expand) {
+        display block;
+      }
+
     }
   }
 }
