@@ -12,4 +12,4 @@ The event bus architecture allows for safe async event control, as only certain 
 
 ### What is the Flux like data flow
 
-In Bee Form, 
+In Bee Form, all form's state: data, errors, temporary data like debounce value, or parse errors, are stored as an immutable object, and when any change happens, the old state object will be updated (using cheap, immutable, shallow object copy) and new state object is created and replace old state. Then React component is informed by the change, update the view, and ready for another user action.
