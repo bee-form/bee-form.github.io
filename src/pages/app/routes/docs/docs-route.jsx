@@ -29,7 +29,7 @@ export class DocsRoute extends FComponent {
     render() {
         const {content} = this.state;
         const {location} = this.props;
-        // content && console.log(content);
+
         return (
             <DocsLayout
                 leftNav={
