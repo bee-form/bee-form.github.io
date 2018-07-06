@@ -30,6 +30,7 @@
     "gulp-sort": "^2.0.0",
     "gulp-stylus": "^2.7.0",
     "jsx-node": "^0.2.2",
+    "marked": "^0.4.0",
     "mkdirp": "^0.5.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

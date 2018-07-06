@@ -1,0 +1,31 @@
+.docs-layout {
+  & > .main {
+    max-width 1170px;
+    margin 0 auto;
+    padding 30px 30px 30px (30px + 292px);
+    position relative;
+
+    & > .left-panel {
+      display none;
+
+      @media screen and (min-width: 768px) {
+        display block;
+
+        position: absolute;
+        top: 0;
+        left: 30px;
+        width: 292px;
+        height 100%;
+
+        padding-top 30px;
+      }
+    }
+    & > .content {
+      max-height 100%;
+      overflow-y auto;
+    }
+    & > .right-panel {
+
+    }
+  }
+}
