@@ -1,9 +1,10 @@
 require("jsx-node").install();
 global.h = require("react").createElement;
 
-var gulp = require("gulp");
+const gulp = require("gulp");
+const clean = require('gulp-clean');
 const Exporting = require("./src/exporting/exporting.jsx").Exporting;
-var spawn = require('child_process').spawn;
+const spawn = require('child_process').spawn;
 
 function createStylusCompiler() {
     return require("./src/build/stylus-compiler").createCompiler({
@@ -25,13 +26,16 @@ function cmd(cmd, options = {
     // stdio: "ignore"
 }) {
 
-    let split = cmd.split(" ");
+    return new Promise((resolve, reject) => {
+        let split = cmd.split(" ");
 
-    if (!/^win/.test(process.platform)) { // linux
-        return spawn(split[0], split.slice(1), options);
-    } else {
-        return spawn('cmd', ['/s', "/c", ...split], options);
-    }
+        const spawnOptions = !/^win/.test(process.platform) ? [split[0], split.slice(1), options] : ['cmd', ['/s', "/c", ...split], options];
+
+        let p = spawn(...spawnOptions);
+        p.on("close", () => {
+            resolve();
+        });
+    });
 }
 
 gulp.task("build:watch", () => {
@@ -43,7 +47,7 @@ gulp.task("build:watch", () => {
 gulp.task("build", () => {
     stylusCompiler.compile();
 
-    cmd("webpack --mode production");
+    return cmd("webpack --mode production");
 });
 
 gulp.task("dev", ["build:watch"], () => {
@@ -53,13 +57,31 @@ gulp.task("dev", ["build:watch"], () => {
     });
 });
 
-gulp.task("test-deploy", async () => {
+gulp.task("clean-deploy", () => {
+    return gulp.src(["../bee-form.github.io/*",
+        "!../bee-form.github.io/.gitignore",
+        "!../bee-form.github.io/.idea",
+        "!../bee-form.github.io/.git",
+    ], {read: false})
+        .pipe(clean({force: true}));
+});
 
+async function doExport() {
 
-    gulp.src("./dist/**").pipe(gulp.dest("../pages-deploy"))
-    gulp.src("./src/content/**").pipe(gulp.dest("../pages-deploy"))
-    gulp.src("./src/server/public/assets/**").pipe(gulp.dest("../pages-deploy/assets"))
-    cmd("http-server ../pages-deploy");
+    gulp.src("./dist/**").pipe(gulp.dest("../bee-form.github.io"));
+    gulp.src("./src/content/**").pipe(gulp.dest("../bee-form.github.io"));
+    gulp.src("./src/server/public/assets/**").pipe(gulp.dest("../bee-form.github.io/assets"));
 
-    await Exporting.doExport("../pages-deploy", "./src/server/public/index.html");
+    await Exporting.doExport("../bee-form.github.io", "./src/server/public/index.html");
+}
+
+gulp.task("test-deploy", ["clean-deploy"], async () => {
+    await doExport();
+
+    cmd("http-server ../bee-form.github.io");
+
+});
+
+gulp.task("deploy", ["clean-deploy", "build"], async () => {
+    await doExport();
 });

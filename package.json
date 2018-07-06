@@ -24,6 +24,7 @@
     "chokidar": "^2.0.3",
     "classnames": "^2.2.5",
     "express": "^4.16.2",
+    "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "gulp-inject": "^4.3.0",
     "gulp-sort": "^2.0.0",
@@ -42,5 +43,8 @@
   "bugs": {
     "url": "https://github.com/bee-form/bee-form.github.io/issues"
   },
-  "homepage": "https://github.com/bee-form/bee-form.github.io#readme"
+  "homepage": "https://github.com/bee-form/bee-form.github.io#readme",
+  "devDependencies": {
+    "gulp-clean": "^0.4.0"
+  }
 }

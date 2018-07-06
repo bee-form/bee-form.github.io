@@ -7,11 +7,12 @@ const Cacher = require("./cacher").Cacher;
 const AsyncResolve = require("./async-resolve").AsyncResolve;
 const mkdirp = Promise.promisify(require("mkdirp"));
 const fs = Promise.promisifyAll(require('fs'));
+const glob = Promise.promisify(require('glob'));
+const Path = require("path");
 
 async function renderComponent(component, path) {
 
     let cacher = Cacher.createCacher((path) => {
-        console.log(`${__dirname}/content${path}`)
         return fs.readFileAsync(`${__dirname}/../content${path}`, "utf8");
     });
 
@@ -51,20 +52,28 @@ const applyHtmlC = (indexHtml) => (html, cached_gets) =>  {
         ;
 };
 
+async function listDocPaths() {
+    let docsAbs = Path.resolve(`${__dirname}/../content/docs`);
+    return await glob(`${docsAbs}/**/index.md`).map((p) =>
+        p.substring(docsAbs.length + 1).replace(/\/index\.md$/, "")
+    );
+}
+
 const Exporting = {
     doExport: async (dir, indexPath) => {
 
         const applyHtml = applyHtmlC(await fs.readFileAsync(indexPath, "utf8"));
+
 
         const exportList = [
             {
                 path: "/",
                 component: HomeRoute,
             },
-            {
-                path: "/docs/",
+            ... await listDocPaths().map((p) => ({
+                path: `/docs/${p}/`,
                 component: DocsRoute,
-            },
+            })),
         ];
 
         for (const exp of exportList) {
