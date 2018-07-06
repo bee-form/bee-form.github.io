@@ -33,7 +33,8 @@ export class HomeRoute extends FComponent {
                         </p>
 
                         <div className="buttons">
-                            <Link to={"/docs"} className="button">Get started</Link>
+                            <Link to={"/docs/getting-started/introduction/"} className="button">Get started</Link>
+                            <a href="https://github.com/bee-form/bee-form-react" className="button">Download</a>
                         </div>
 
                     </div>
