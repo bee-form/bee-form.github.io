@@ -32,6 +32,7 @@ export class DocsRoute extends FComponent {
 
         return (
             <DocsLayout
+                className="docs-route"
                 leftNav={
                     <LeftNav
                         active={(() => {
