@@ -1,18 +1,16 @@
-# Getting Started
-
-## Introduction
+# Introduction
 
 Bee Form is a sophisticated forming system, capable of handling the most complicated form requirements. However, on top 
 of that, is a very simple, un-opinionated and non-intrusive API.
 
 
-### Install
+## Install
 
 ```
 npm i --save bee-form-react
 ```
 
-### First Bee Form : Hello World
+## First Bee Form : Hello World
 
 To start using Bee Form, you don't have to change any code outside of the component that host your form.
 

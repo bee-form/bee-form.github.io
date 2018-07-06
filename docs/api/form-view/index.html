@@ -20,8 +20,59 @@
 </head>
 <body>
 <div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="line"><div class="left"><div class="icon">BF</div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div><div class="content docs-layout"><div class="main"><div class="left-panel"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section active"><a class="title" href="/docs/api/create-form/">API</a><div class="items"><a class="item" href="/docs/api/create-form/">createForm()</a><a class="item active" href="/docs/api/form-view/">Form view</a></div></div></div></div><div class="content"><div><h1 id="form-view">Form View</h1>
-<p>Ha ha ha</p>
-</div></div><div class="right-panel"></div></div></div></div></div>
+<p>Often named as <code>fv</code></p>
+<p>Note that all values in form view are &quot;View Value&quot;, which will be under effect of <code>tunnel</code>&#39;s parse and format functions, more explanation is at <code>fv.getValue([path])</code> and <code>fv.pushValue([path], newValue)</code> definitions.</p>
+<h3 id="fv-getvalue-path-">fv.getValue([path])</h3>
+<p><code>path</code> is the path string to the field that we need to get value, or empty/null/undefined to get full form data (in case this is root form view, not scoped down)</p>
+<p>Note that the value returned is &quot;view value&quot;, which means if this path has any tunnel configured, then the tunnel&#39;s <code>format</code> method will be called upon the real data first, and the formatted result will be returned by <code>getValue</code> method.</p>
+<h3 id="fv-getdata-">fv.getData()</h3>
+<p>Equals to <code>fv.getValue()</code> (without <code>path</code>).</p>
+<p>Note that this is also &quot;view value&quot;, so if you configure a tunnel at data root (which you should not), then the formatted data will be returned .</p>
+<h3 id="fv-pushvalue-path-newvalue-">fv.pushValue([path], newValue)</h3>
+<p><code>path</code> is the path string to the field that we need to change value, or empty/null/undefined to change full form data (in case this is root form view, not scoped down)</p>
+<p><code>newValue</code> is new value for path, in case path is undefined, newValue will replace full form data (with root form view)</p>
+<p>Note that the newValue here is &quot;view value&quot;, which means if this path has any tunnel configured, then the tunnel&#39;s <code>parse</code> method will be called upon this view value first, then only parsed data will be applied to the field at given <code>path</code>.</p>
+<h3 id="fv-bind-path-">fv.bind([path])</h3>
+<p><code>bind</code> method is the convenient method for React&#39;s inputs (value, onChange...) that internally invoke <code>fv.getValue([path])</code> and <code>fv.pushValue([path])</code>. The returned object should be similar to this:</p>
+<pre><code>{
+    value: getValue(path),
+    onChange: (e) =&gt; pushValue(path, e.target.value),
+}</code></pre><h3 id="fv-changevalue-path-reducer-">fv.changeValue([path], reducer)</h3>
+<p>The <code>changeValue</code> method is a convenient method which does 3 things:</p>
+<ol>
+<li>Get the current <code>path</code>&#39;s value (view value). </li>
+<li>Apply <code>reducer</code> function to the value.</li>
+<li>Set (<code>pushValue</code>) the changed value back to <code>path</code>&#39;s field.</li>
+</ol>
+<h3 id="fv-haserror-path-">fv.hasError([path])</h3>
+<p>Return true if field at <code>path</code> or any field below it error. For example <code>fv.hasError(&quot;student&quot;)</code> will return true if student&#39;s name, or email, or age has error.</p>
+<p>If <code>path</code> is omitted, then the whole form is checked for error (in case of root form view).</p>
+<h3 id="fv-isvalid-path-">fv.isValid([path])</h3>
+<p>Does the opposite of <code>hasError</code> method</p>
+<h3 id="fv-geterror-path-">fv.getError([path])</h3>
+<p>Get the name of the error at <code>path</code>, or <code>undefined</code> if no error is found.</p>
+<h3 id="fv-scope-path-">fv.scope([path])</h3>
+<p>Return a scoped down version of this form view, associated with data from <code>path</code> downward.</p>
+<p>For example:</p>
+<pre><code>fv.bind(&quot;student[0].name&quot;)</code></pre><p>will be equal to</p>
+<pre><code>fv.scope(&quot;student[0]&quot;).bind(&quot;name&quot;)</code></pre><p>or</p>
+<pre><code>fv.scope(&quot;student[0].name&quot;).bind()</code></pre><h3 id="fv-map-path-fn-">fv.map([path], fn)</h3>
+<p>This method gets value (view value) at the <code>path</code>, and expects the value to be an array. Then with each item of that array, form view will create a scoped down version of itself associated with that item, then call <code>fn</code> with that scoped down form view.</p>
+<h3 id="fv-withcontrol-path-fn-">fv.withControl([path], fn)</h3>
+<p>This is a convenient method, which does:</p>
+<ol>
+<li>Create a scoped down version of form view associated with <code>path</code>.</li>
+<li>Call <code>fn</code> with that scoped down form view</li>
+<li>Return the result of fn.</li>
+</ol>
+<p>Basically, it is the same to: <code>fn(fv.scope(path))</code>, but provides a cleaner looking invocation sequence.</p>
+<p>For example:</p>
+<pre><code>{fv.withControl(&quot;name&quot;, ({bind}) =&gt; (
+    &lt;input {...bind()} /&gt;
+)}</code></pre><p>Instead of:</p>
+<pre><code>(({bind}) =&gt; (
+    &lt;input {...bind()} /&gt;
+))(fv.scope(&quot;name&quot;))</code></pre></div></div><div class="right-panel"></div></div></div></div></div>
 
 <script>window.cached_gets = ["/docs/api/form-view/index.md"]</script>
 

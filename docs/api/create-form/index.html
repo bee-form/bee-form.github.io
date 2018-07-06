@@ -20,7 +20,35 @@
 </head>
 <body>
 <div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="line"><div class="left"><div class="icon">BF</div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div><div class="content docs-layout"><div class="main"><div class="left-panel"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section active"><a class="title" href="/docs/api/create-form/">API</a><div class="items"><a class="item active" href="/docs/api/create-form/">createForm()</a><a class="item" href="/docs/api/form-view/">Form view</a></div></div></div></div><div class="content"><div><h1 id="create-form">Create form</h1>
-<p>Ha ha ha</p>
+<p>API:</p>
+<pre><code>createForm(formConfig, [initialData]) : Form</code></pre><p>This is a sample configuration to create a register form</p>
+<pre><code>createForm({
+    &quot;name&quot;: [required, nameFormat],
+    &quot;email&quot;: {
+        validators: [required, emailFormat, emailNotExist],
+        debounce: 400,
+    },
+    &quot;password&quot;: [required, minLength(6)],
+    &quot;confirm-password&quot;: [required, equals(&quot;password&quot;)],
+});</code></pre><p>A form rule consists of paths to each field and rules applied to that field.</p>
+<p>Not every field needs a rule. For fields that don&#39;t have rule configured, user can still use that field, just that no rule will be applied to it, so there will be no validator check, no debounce, or parsing/formatting</p>
+<p>Each field rule consists of &quot;validators&quot;, &quot;debounce&quot;, and &quot;faces&quot; ( for example <code>{&quot;!date&quot;: [dateStrTunnel]}</code> )</p>
+<p>Paths can contain wild card character (*), for example a school class form:</p>
+<pre><code>createForm({
+    &quot;className&quot; : [required],
+    &quot;pupils&quot;: [colNotEmpty],
+    &quot;pupils[*].name&quot;: [required],
+})</code></pre><p>The <code>pupils[*].name</code> path will let rules applied to name of all pupils in class.</p>
+<p>Or example of a &quot;multi-names&quot; super agent:</p>
+<pre><code>createForm({
+    &quot;realName&quot; : [required],
+    &quot;otherNames[*]&quot;: [required],
+})</code></pre><p>Now, either no <code>otherNames</code> is inputted, or if any <code>otherNames</code> is added, each of them should be a string, with <code>length &gt; 0</code>, or form will not be valid.</p>
+<h2 id="form">Form</h2>
+<h3 id="form-onchange-listener-">form.onChange(listener)</h3>
+<p><code>listener</code> is a function, and it will be invoked any time form&#39;s state is changed. React component should add this line to observe form&#39;s changes: <code>form.onChange(() =&gt; this.forceUpdate()</code></p>
+<h3 id="form-createview-">form.createView()</h3>
+<p>Returns a FormView object which associate itself with current form&#39;s state. Future state changes will not affect this form view.</p>
 </div></div><div class="right-panel"></div></div></div></div></div>
 
 <script>window.cached_gets = ["/docs/api/create-form/index.md"]</script>
