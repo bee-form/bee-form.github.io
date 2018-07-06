@@ -89,7 +89,7 @@ gulp.task("deploy", ["clean-deploy", "build"], async () => {
     // await cmd("git commit -m deploy", {cwd: deployDir});
 });
 
-gulp.task("test", async () => {
+gulp.task("push", async () => {
     await cmd("git add **", {cwd: deployDir});
     await cmd("git commit -m deploy", {cwd: deployDir});
     await cmd("git push origin master", {cwd: deployDir});

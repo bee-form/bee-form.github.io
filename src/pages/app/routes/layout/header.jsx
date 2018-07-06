@@ -16,7 +16,7 @@ export class Header extends FComponent {
             },
             {
                 label: "Documentation",
-                name: "documentation",
+                name: "docs",
                 to: "/docs/getting-started/introduction/",
             },
             {
