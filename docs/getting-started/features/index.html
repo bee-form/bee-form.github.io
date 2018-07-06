@@ -36,7 +36,7 @@
 });</code></pre><p>And that&#39;s it, name will have error and block form&#39;s submit unless user type in &quot;Q&quot; for it.</p>
 <h2 id="debounce-before-validation">Debounce before validation</h2>
 <p>Debounce is also a very common in any place that async validation happens to save round trips to server while user is still typing</p>
-<p>To add debounce to your field &quot;name&quot;, you will need to first extend it&#39;s declaration to the full format (from <code>[required, {name: ...}], into</code>{ validators: [required... ], }`), then add debounce value to it:</p>
+<p>To add debounce to your field &quot;name&quot;, you will need to first extend it&#39;s declaration to the full format (from <code>[required, {name: ...}]</code>, into <code>{ validators: [required... ], }</code>), then add debounce value to it:</p>
 <pre><code>this.form = createForm({
     &quot;name&quot;: {
         validators: [required, {name: &quot;async&quot;, validate: validateName}],
@@ -44,8 +44,9 @@
     },
 });</code></pre><h2 id="parse-format-value">Parse/format value</h2>
 <p>Another common requirement that often happen to forms is parsing user&#39;s input value into form&#39;s data. This often happens to date or number values but can also be Json or any server&#39;s specific data format (like instead of using date string or timestamp, server wants <code>{year: 2018, month: ...}</code>)</p>
-<p>This requirement can often leads to a lot of coding problem if it&#39;s not natively supported the form engine, for example, if user is still in process of typing in the date value (<code>11-2</code>), if form engine does not detect it and block submitting, it can easily leads user to misunderstanding that all his/her inputs are correct and submit the form with unwanted value.</p>
-<p>Bee Form natively support parsing/formatting, and use a new term: <code>tunnel</code> for it. A tunnel will have both methods for parsing and formatting value. Parsing is used for user&#39;s raw input (view) value, and formatting is used to format server sent, or initial form value into user&#39;s expected view format.</p>
+<p>This requirement can often leads to a lot of coding problem if it&#39;s not natively supported the form engine, for example, if user is still in process of typing in the date value (<code>11-2</code>), if form engine does not detect it and does not block submitting, it can easily leads user to misunderstand that all his/her inputs are correct and submit the form with unwanted values.</p>
+<p>Bee Form natively support parsing/formatting, when a field has parsing error, form will be marked as invalid and user will have to fix it before submitting. Bee Form uses a new term: <code>tunnel</code> for parsing/formatting. A tunnel will have both methods for parsing and formatting value. Parsing is used to convert user&#39;s raw input (view) value into data&#39;s format, and formatting is used to format data into user&#39;s expected view format.</p>
+<p>To add parsing/formatting to your form&#39;s field, add this import (a sample tunnel to parse/format number values):</p>
 <pre><code>import {intNumber} from &quot;bee-form/basic-tunnels&quot;;</code></pre><p>And configured it into the form: note that the rule for name here is also extended and <code>tunnel</code> is declared in place of <code>debounce</code> in the previous sample</p>
 <pre><code>this.form = createForm({
     &quot;age&quot;: {
