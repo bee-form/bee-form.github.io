@@ -2,7 +2,7 @@ import cln from "classnames";
 import React from "react";
 import {FComponent} from "../../../common/f-component";
 import {docApi} from "../../../common/api/doc-api";
-import {DocsLayout} from "./docs-layout";
+import {DocsLayout} from "./layout/docs-layout";
 import marked from "marked";
 import {LeftNav} from "./left-nav";
 

@@ -1,6 +1,6 @@
 # Create form
 
-API:
+## API:
 
 ```
 createForm(formConfig, [initialData]) : Form

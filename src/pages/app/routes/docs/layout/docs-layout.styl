@@ -7,7 +7,10 @@
     height 100%;
 
     @media screen and (min-width: 768px) {
-      padding-left 292px;
+      padding-left 30%;
+    }
+    @media screen and (min-width: 1050px) {
+      padding-left 20%;
     }
 
     & > .left-panel {
@@ -19,10 +22,15 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 292px;
+        width: 30%;
         height 100%;
 
         padding-top 15px;
+
+        border-right 1px solid rgba(0,0,0,.1);
+      }
+      @media screen and (min-width: 1050px) {
+        width: 20%;
       }
     }
     & > .content {
