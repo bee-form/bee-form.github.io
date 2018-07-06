@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <base href="/">
+    <title>Bee Form</title>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">-->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.1/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.3.1/react-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
+</head>
+<body>
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="line"><div class="left"><div class="icon">BF</div><a class="nav-item" href="/">Home</a><a class="nav-item" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div><div class="content docs-layout"><div class="main"><div class="left-panel"><div class="left-nav"><div class="section active"><a class="title" href="/docs/getting-started/introduction/">Getting started</a><div class="items"><a class="item" href="/docs/getting-started/introduction/">Introduction</a></div></div><div class="section"><a class="title" href="/docs/api/create-form/">API</a></div></div></div><div class="content"><div><h2 id="architecture">Architecture</h2>
+<p>From inside, Bee Form is powered by the powerful &quot;Event Bus&quot; architecture and a Flux like data flow</p>
+<h3 id="what-is-event-bus-architecture">What is Event bus architecture</h3>
+<p>The Event Bus architecture keeps track of all future events that may or may not happen to the form&#39;s state, and allows for those asynchronous changes to be deprecated and cancelled based on future condition.</p>
+<p>For example, when an async validation happen, an api is launched, and scheduled that when come back, will help determine the validation status of a given field value, however, when the api is still in the air, user changed the input, and that api call should be deprecated. Event bus will help cancel the http api, however, in case it can not be cancelled, event bus will make sure that when the response come, it will not make any impact on the form state, or we can say, it&#39;s rejected.</p>
+<p>The event bus architecture allows for safe async event control, as only certain events are deprecated and cancelled given a state change is invoked.</p>
+<h3 id="what-is-the-flux-like-data-flow">What is the Flux like data flow</h3>
+<p>In Bee Form, </p>
+</div></div><div class="right-panel"></div></div></div></div></div>
+
+<script>window.cached_gets = ["/docs/getting-started/architecture/index.md"]</script>
+
+<script async defer src="js/loader.js"></script>
+
+
+</body>
+</html>

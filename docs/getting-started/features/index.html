@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <base href="/">
+    <title>Bee Form</title>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">-->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.1/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.3.1/react-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
+</head>
+<body>
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="line"><div class="left"><div class="icon">BF</div><a class="nav-item" href="/">Home</a><a class="nav-item" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div><div class="content docs-layout"><div class="main"><div class="left-panel"><div class="left-nav"><div class="section active"><a class="title" href="/docs/getting-started/introduction/">Getting started</a><div class="items"><a class="item" href="/docs/getting-started/introduction/">Introduction</a></div></div><div class="section"><a class="title" href="/docs/api/create-form/">API</a></div></div></div><div class="content"><div><h2 id="features">Features</h2>
+<h4 id="async-validation-">Async validation?</h4>
+<p>Mock api:</p>
+<pre><code>function validateName(name) {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            resolve(name === &quot;Q&quot;);
+        }, 600);
+    });
+}</code></pre><p>And wire it up:</p>
+<pre><code>this.form = createForm({
+    &quot;name&quot;: [required, {name: &quot;async&quot;, validate: validateName}],
+});</code></pre><h4 id="debounce-before-validation-">Debounce before validation?</h4>
+<pre><code>this.form = createForm({
+    &quot;name&quot;: {
+        validators: [required, {name: &quot;async&quot;, validate: validateName}],
+        debounce: 400,
+    },
+});</code></pre><h4 id="parse-format-value-">Parse/format value?</h4>
+<pre><code>import {intNumber} from &quot;bee-form/basic-tunnels&quot;;</code></pre><p>And</p>
+<pre><code>this.form = createForm({
+    &quot;age&quot;: {
+        validators: [required],
+        tunnel: [intNumber],
+    },
+});</code></pre><h4 id="a-list-">A list?</h4>
+<pre><code>this.form = createForm({
+    &quot;children[*].name&quot;: [required],
+});</code></pre></div></div><div class="right-panel"></div></div></div></div></div>
+
+<script>window.cached_gets = ["/docs/getting-started/features/index.md"]</script>
+
+<script async defer src="js/loader.js"></script>
+
+
+</body>
+</html>
