@@ -22,7 +22,7 @@ function createStylusCompiler() {
 const stylusCompiler = createStylusCompiler();
 
 function cmd(cmd, options = {
-    stdio: "inherit"
+    stdio: "inherit",
     // stdio: "ignore"
 }) {
 
@@ -32,7 +32,8 @@ function cmd(cmd, options = {
         const spawnOptions = !/^win/.test(process.platform) ? [split[0], split.slice(1), options] : ['cmd', ['/s', "/c", ...split], options];
 
         let p = spawn(...spawnOptions);
-        p.on("close", () => {
+        p.on("close", (a, b) => {
+            // console.log(a, b)
             resolve();
         });
     });
@@ -66,13 +67,13 @@ gulp.task("clean-deploy", () => {
         .pipe(clean({force: true}));
 });
 
+const deployDir = __dirname + "/../bee-form.github.io";
 async function doExport() {
+    gulp.src("./dist/**").pipe(gulp.dest(deployDir));
+    gulp.src("./src/content/**").pipe(gulp.dest(deployDir));
+    gulp.src("./src/server/public/assets/**").pipe(gulp.dest(deployDir + "/assets"));
 
-    gulp.src("./dist/**").pipe(gulp.dest("../bee-form.github.io"));
-    gulp.src("./src/content/**").pipe(gulp.dest("../bee-form.github.io"));
-    gulp.src("./src/server/public/assets/**").pipe(gulp.dest("../bee-form.github.io/assets"));
-
-    await Exporting.doExport("../bee-form.github.io", "./src/server/public/index.html");
+    await Exporting.doExport(deployDir, "./src/server/public/index.html");
 }
 
 gulp.task("test-deploy", ["clean-deploy"], async () => {
@@ -84,4 +85,12 @@ gulp.task("test-deploy", ["clean-deploy"], async () => {
 
 gulp.task("deploy", ["clean-deploy", "build"], async () => {
     await doExport();
+
+    // await cmd("git commit -m deploy", {cwd: deployDir});
+});
+
+gulp.task("test", async () => {
+    await cmd("git add **", {cwd: deployDir});
+    await cmd("git commit -m deploy", {cwd: deployDir});
+    await cmd("git push origin master", {cwd: deployDir});
 });

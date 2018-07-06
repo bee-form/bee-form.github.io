@@ -9,12 +9,16 @@ export class LeftNav extends FComponent {
         const {active} = this.props;
         const sections = [
             {
-                label: "Getting started",
                 name: "getting-started",
                 items: [
                     {
-                        label: "Introduction",
                         name: "introduction",
+                    },
+                    {
+                        name: "features",
+                    },
+                    {
+                        name: "architecture",
                     },
                 ],
             },
@@ -27,7 +31,6 @@ export class LeftNav extends FComponent {
                         name: "create-form",
                     },
                     {
-                        label: "Form view",
                         name: "form-view",
                     },
                 ],
@@ -39,7 +42,7 @@ export class LeftNav extends FComponent {
                 {sections.map((section) => (
                     <div className={cln("section", {active: section.name === active.section})} key={section.name}>
                         <Link className="title" to={`/docs/${section.name}/${section.items[0].name}/`}>
-                            {section.label}
+                            {section.label ? section.label : nameToLabel(section.name)}
                         </Link>
 
                         {section.name === active.section && (
@@ -49,7 +52,7 @@ export class LeftNav extends FComponent {
                                         className={cln("item", {active: item.name === active.item})} key={item.name}
                                         to={`/docs/${section.name}/${item.name}/`}
                                     >
-                                        {item.label}
+                                        {item.label ? item.label : nameToLabel(item.name)}
                                     </Link>
                                 ))}
                             </div>
@@ -59,4 +62,9 @@ export class LeftNav extends FComponent {
             </div>
         );
     }
+}
+
+function nameToLabel(name) {
+    let label = name.replace(/-/g, " ");
+    return label[0].toUpperCase() + label.substring(1);
 }
