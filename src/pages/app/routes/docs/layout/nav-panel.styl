@@ -1,0 +1,44 @@
+.docs-layout .nav-panel {
+  & > .mobile-header {
+    border-bottom 1px solid rgba(black, 0.1);
+    height 55px;
+
+    @media screen and (min-width: 768px) {
+      display none;
+    }
+
+    position relative;
+
+    .toggle {
+      position: absolute;
+      top: 15px;
+      right: 21px;
+      padding 6px;
+
+      //width: 60px;
+      //height 60px;
+      //border 1px solid black;
+      //border-radius 4px;
+
+      .bar {
+        width 24px;
+        height 2px;
+        background black;
+        margin-bottom 6px;
+      }
+    }
+  }
+
+  & > .content {
+    padding 20px 0;
+
+    border-bottom 1px solid rgba(black, 0.1);
+    @media screen and (min-width: 768px) {
+      border-bottom none;
+    }
+
+    &:not(.expand) {
+      display none;
+    }
+  }
+}

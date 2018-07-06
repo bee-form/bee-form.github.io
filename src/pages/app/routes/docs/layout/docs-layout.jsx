@@ -2,16 +2,9 @@ import cln from "classnames";
 import React from "react";
 import {FComponent} from "../../../../common/f-component";
 import {Layout} from "../../layout/layout";
+import {NavPanel} from "./nav-panel";
 
 export class DocsLayout extends FComponent {
-    constructor(props, context) {
-        super(props, context);
-
-        this.state = {
-            expandLeft: false,
-        };
-    }
-
     render() {
         const {content, leftNav, rightNav, className} = this.props;
 
@@ -19,9 +12,9 @@ export class DocsLayout extends FComponent {
             <Layout active="docs" className="docs-layout">
 
                 <div className="main">
-                    <div className="left-panel">
-                        {leftNav}
-                    </div>
+
+                    <NavPanel content={leftNav}/>
+
                     <div className={cln("content", className)}>
                         {content}
                     </div>
