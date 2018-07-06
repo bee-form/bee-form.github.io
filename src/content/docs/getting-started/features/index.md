@@ -86,3 +86,5 @@ And in render:
 ```
 
 Just that, no need for any extra component. The "childFv" is a version of "fv" (Form View), which is scoped down to handle only the child's data, and any method that you use in "fv" is also available in "childFv" (bind, map, scope, getData, getValue, isValid...) only that invoking them will have effect from the child's data downward.
+
+Scoping down is a common technique used in Bee Form, to provide a powerful yet simple and safe way to handle form controls. Other methods that use "scoping down": `fv.scope("path")` and `fv.withControl("path", (childFv) => (...))`
