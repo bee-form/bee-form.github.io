@@ -1,8 +1,8 @@
-## Features
+# Features
 
 This is a quick introduction of Bee Form's features
 
-### Async validation
+## Async validation
 
 Async validation is commonly used in forms today, and Bee Form has native, first-class support for it.
 
@@ -26,7 +26,7 @@ this.form = createForm({
 
 And that's it, name will have error and block form's submit unless user type in "Q" for it.
 
-### Debounce before validation
+## Debounce before validation
 
 Debounce is also a very common in any place that async validation happens to save round trips to server while user is still typing
 
@@ -41,7 +41,7 @@ this.form = createForm({
 });
 ```
 
-### Parse/format value
+## Parse/format value
 
 Another common requirement that often happen to forms is parsing user's input value into form's data. This often happens to date or number values but can also be Json or any server's specific data format (like instead of using date string or timestamp, server wants `{year: 2018, month: ...}`)
 
@@ -65,7 +65,7 @@ this.form = createForm({
 
 Please also note that Bee Form has support for mapping 2 user's input into 1 form's value, like in case of date input and time input. This is done with the "Faces" feature, and has an example for using both Tunnel and Faces in the [Examples section](https://bee-form.github.io/bee-form-react-demo/)
 
-### Handle lists
+## Handle lists
 
 Lists is also a very common requirement in forms these days. In Bee Form, we are proud to provide a very intuitive and simple API to handle lists
 
