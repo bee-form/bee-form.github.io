@@ -15,7 +15,7 @@ export class LeftNav extends FComponent {
                     {
                         label: "Introduction",
                         name: "introduction",
-                    }
+                    },
                 ],
             },
             {
@@ -25,7 +25,11 @@ export class LeftNav extends FComponent {
                     {
                         label: "createForm()",
                         name: "create-form",
-                    }
+                    },
+                    {
+                        label: "Form view",
+                        name: "form-view",
+                    },
                 ],
             },
         ];
