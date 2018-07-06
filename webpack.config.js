@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
     cache: true,
     // devtool: "eval",
-    entry: ["babel-polyfill", "./src/pages/loader.jsx"],
+    entry: ["./src/pages/loader.jsx"],
     output: {
         path: `${__dirname}/dist/js`,
         filename: "loader.js"

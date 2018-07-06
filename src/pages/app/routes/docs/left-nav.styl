@@ -1,8 +1,14 @@
 .docs-layout .left-panel .left-nav {
   & > .section {
     letter-spacing 0.5px;
+    margin-bottom: 1rem;
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+
 
     & > .title {
+      display block;
       font-weight 500;
       font-size 1rem;
 
@@ -10,16 +16,14 @@
       color rgba(black, 0.85);
 
       &.active {
-        margin-bottom: 1rem;
+
         color black;
-        &:not(:first-child) {
-          margin-top: 1rem;
-        }
       }
     }
 
     & > .items {
       .item {
+        display block;
         padding .25rem 1.5rem;
         color rgba(black, 0.85);
         font-weight 400;

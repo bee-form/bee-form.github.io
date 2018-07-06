@@ -13,14 +13,23 @@ export class DocsRoute extends FComponent {
 
         this.state = {
             content: null,
+            loading: true,
         };
-        docApi.getDoc(getDocLocation(props.location.pathname)).then((content) => this.setState({content}));
+        docApi.getDoc(getDocLocation(props.location.pathname)).then((content) => this.setState({content, loading: false}));
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.pathname !== this.props.location.pathname) {
+            this.setState({loading: true});
+
+            docApi.getDoc(getDocLocation(this.props.location.pathname)).then((content) => this.setState({content, loading: false}));
+        }
     }
 
     render() {
         const {content} = this.state;
         const {location} = this.props;
-        content && console.log();
+        // content && console.log(content);
         return (
             <DocsLayout
                 leftNav={

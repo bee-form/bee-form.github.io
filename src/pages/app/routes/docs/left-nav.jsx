@@ -1,6 +1,7 @@
 import cln from "classnames";
 import React from "react";
 import {FComponent} from "../../../common/f-component";
+import {Link} from "react-router-dom";
 
 export class LeftNav extends FComponent {
 
@@ -17,22 +18,35 @@ export class LeftNav extends FComponent {
                     }
                 ],
             },
+            {
+                label: "API",
+                name: "api",
+                items: [
+                    {
+                        label: "createForm()",
+                        name: "create-form",
+                    }
+                ],
+            },
         ];
 
         return (
             <div className="left-nav">
                 {sections.map((section) => (
                     <div className={cln("section", {active: section.name === active.section})} key={section.name}>
-                        <div className="title">
+                        <Link className="title" to={`/docs/${section.name}/${section.items[0].name}/`}>
                             {section.label}
-                        </div>
+                        </Link>
 
                         {section.name === active.section && (
                             <div className="items">
                                 {section.items.map((item) => (
-                                    <div className={cln("item", {active: item.name === active.item})} key={item.name}>
+                                    <Link
+                                        className={cln("item", {active: item.name === active.item})} key={item.name}
+                                        to={`/docs/${section.name}/${item.name}/`}
+                                    >
                                         {item.label}
-                                    </div>
+                                    </Link>
                                 ))}
                             </div>
                         )}
