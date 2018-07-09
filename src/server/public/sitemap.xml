@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://bee-form.github.io/</loc>
+  <lastmod>2018-07-09T08:32:07+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://bee-form.github.io/docs/getting-started/introduction/</loc>
+  <lastmod>2018-07-09T08:32:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bee-form.github.io/bee-form-react-demo/</loc>
+  <lastmod>2018-07-09T07:35:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bee-form.github.io/docs/getting-started/features/</loc>
+  <lastmod>2018-07-09T08:32:07+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bee-form.github.io/docs/getting-started/architecture/</loc>
+  <lastmod>2018-07-09T08:32:07+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bee-form.github.io/docs/api/create-form/</loc>
+  <lastmod>2018-07-09T08:32:07+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bee-form.github.io/docs/faq/</loc>
+  <lastmod>2018-07-09T08:32:07+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bee-form.github.io/docs/api/form-view/</loc>
+  <lastmod>2018-07-09T08:32:07+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://bee-form.github.io/docs/api/validator/</loc>
+  <lastmod>2018-07-09T08:32:07+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://bee-form.github.io/docs/api/tunnel/</loc>
+  <lastmod>2018-07-09T08:32:07+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
