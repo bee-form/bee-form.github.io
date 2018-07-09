@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <base href="/">
+    <title>Bee Form</title>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">-->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.1/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.3.1/react-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
+</head>
+<body>
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="fixed"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div></div><div class="content docs-layout"><div class="main"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section active"><a class="title" href="/docs/api/create-form/">API</a><div class="items"><a class="item" href="/docs/api/create-form/">createForm()</a><a class="item" href="/docs/api/form-view/">Form view</a><a class="item active" href="/docs/api/config-condition/">Config condition</a><a class="item" href="/docs/api/validator/">Validator</a><a class="item" href="/docs/api/tunnel/">Tunnel</a></div></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="config-condition">Config condition</h1>
+<p>In case your form has multiple sections, and some of them is may be disabled and need not to be validated at all, then Bee Form&#39;s config condition can help.</p>
+<p>For example:</p>
+<pre><code>import {createForm, condition, ...} from &quot;bee-form-react&quot;;
+
+createForm([
+    {
+        &quot;sex&quot;: [either(&quot;male&quot;, &quot;female&quot;)],
+    },
+    condition((data) =&gt; data.sex === &quot;female&quot;, {
+        &quot;pregnant&quot;: [required, either(true, false)],
+    })
+])</code></pre><p>With this sample, there are a few changes to original form config:</p>
+<ol>
+<li>We need to import <code>condition</code> from &quot;bee-form-react&quot;</li>
+<li>While createForm, we no longer pass form config as a map any more, instead, it should be an array.</li>
+<li>First item of the array is normal form config that we had seen, second item, is the section that has condition applied, with the condition itself defined first, then the section&#39;s configuration which is of the same format as form configuration that we see in other samples.</li>
+</ol>
+<p>While running this sample, we will see that the field &quot;pregnant&quot; will only be validated (with <code>required</code> and <code>either</code>) when &quot;sex&quot; is set to &quot;female&quot;. If &quot;sex&quot; is set to &quot;male&quot;, &quot;pregnant&quot; field is irrelevant, no validation will be run against it.</p>
+</div></div><div class="right-panel"></div></div></div></div></div>
+
+<script>window.cached_gets = ["/docs/api/config-condition/index.md"]</script>
+
+<script async defer src="js/loader.js"></script>
+
+
+</body>
+</html>
