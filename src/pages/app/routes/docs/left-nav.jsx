@@ -34,6 +34,9 @@ export class LeftNav extends FComponent {
                         name: "form-view",
                     },
                     {
+                        name: "config-condition",
+                    },
+                    {
                         name: "validator",
                     },
                     {
