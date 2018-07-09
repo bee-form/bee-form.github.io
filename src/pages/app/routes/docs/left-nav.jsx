@@ -35,19 +35,30 @@ export class LeftNav extends FComponent {
                     },
                 ],
             },
+            {
+                label: "FAQ",
+                name: "faq",
+                directLink: true,
+            },
         ];
 
         return (
             <div className="left-nav">
                 {sections.map((section) => (
                     <div className={cln("section", {active: section.name === active.section})} key={section.name}>
-                        <Link className="title" to={`/docs/${section.name}/${section.items[0].name}/`}>
+                        <Link
+                            className="title"
+                            to={section.directLink ?
+                                `/docs/${section.name}/`
+                                :
+                                `/docs/${section.name}/${section.items[0].name}/`}
+                        >
                             {section.label ? section.label : nameToLabel(section.name)}
                         </Link>
 
                         {section.name === active.section && (
                             <div className="items">
-                                {section.items.map((item) => (
+                                {section.items && section.items.map((item) => (
                                     <Link
                                         className={cln("item", {active: item.name === active.item})} key={item.name}
                                         to={`/docs/${section.name}/${item.name}/`}
