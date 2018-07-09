@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <base href="/">
+    <title>Bee Form</title>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">-->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.1/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.3.1/react-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
+</head>
+<body>
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="fixed"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div></div><div class="content docs-layout"><div class="main"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section active"><a class="title" href="/docs/api/create-form/">API</a><div class="items"><a class="item" href="/docs/api/create-form/">createForm()</a><a class="item" href="/docs/api/form-view/">Form view</a><a class="item active" href="/docs/api/validator/">Validator</a><a class="item" href="/docs/api/tunnel/">Tunnel</a></div></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="validator">Validator</h1>
+<p>A validator represent a rule that field value&#39;s must follow in order for it to be marked as valid.</p>
+<p>If a form has any invalid field, the whole form will be marked as invalid</p>
+<p>A field (or a field&#39;s face )will have a list of validators, and when a validator does not return true, then sub-sequence validators will not be called </p>
+<h2 id="api">API</h2>
+<p>A validator has 2 attributes: <code>name</code> and <code>validate</code></p>
+<h3 id="validator-name-string">Validator.name : string</h3>
+<p>Validator&#39;s name is what the form keeps track of in case the field is invalid, and through <code>fv.getError()</code>, developer will know exactly which validator has failed to validate and give users proper error messages.</p>
+<h3 id="validator-validate-fieldvalue-formdata-true-false-promise">Validator.validate : (fieldValue, formData) =&gt; true | false | Promise</h3>
+<p>Validate method can return true or false to indicate the field value has passed validation.</p>
+<p>Validate method can also return a promise indicating an async API call is being made and will resolve to either true or false. During this API time, the field will be marked as invalid, and status is &quot;requesting&quot;. After API call is done, it&#39;s marked as either valid or invalid based on whether the API resolve to true or not.</p>
+<p>This is a sample validator:</p>
+<pre><code>const largerThan5 = {
+    name: &quot;larger-than-5&quot;,
+    validate: (value) =&gt; value &gt; 5,
+};
+
+createForm({
+    &quot;age&quot;: [largerThan5],
+});
+</code></pre></div></div><div class="right-panel"></div></div></div></div></div>
+
+<script>window.cached_gets = ["/docs/api/validator/index.md"]</script>
+
+<script async defer src="js/loader.js"></script>
+
+
+</body>
+</html>

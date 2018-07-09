@@ -110,3 +110,11 @@ Instead of:
 ))(fv.scope("name"))
 ```
 
+#### fv.isPristine([path])
+
+Check if field at `path` is not touched by user (not focused or changed value)
+
+#### fv.isDirty([path])
+
+Check if field at `path` is not edited/changed value by user
+

@@ -59,5 +59,13 @@ Now, either no `otherNames` is inputted, or if any `otherNames` is added, each o
 
 Returns a FormView object which associate itself with current form's state. Future state changes will not affect this form view.
 
+### form.getData()
+
+Get the current data
+
+### form.setData(newData)
+
+Set data to new version
+
 
  
