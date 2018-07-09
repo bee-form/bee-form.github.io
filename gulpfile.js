@@ -72,6 +72,7 @@ async function doExport() {
     gulp.src("./dist/**").pipe(gulp.dest(deployDir));
     gulp.src("./src/content/**").pipe(gulp.dest(deployDir));
     gulp.src("./src/server/public/assets/**").pipe(gulp.dest(deployDir + "/assets"));
+    gulp.src(["./src/server/public/*.*", "!./src/server/public/index.html"]).pipe(gulp.dest(deployDir));
 
     await Exporting.doExport(deployDir, "./src/server/public/index.html");
 }
