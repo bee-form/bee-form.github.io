@@ -1,6 +1,8 @@
 .docs-layout > .main > .docs-route.content {
 
   padding 15px;
+  font-weight 400;
+  letter-spacing 0.5px;
 
   @media screen and (min-width: 768px) {
     padding-left 48px;
@@ -24,5 +26,16 @@
       padding 0;
       border-radius 0;
     }
+  }
+
+  a {
+    color #395799;
+    font-weight 600;
+
+    &:hover {
+      color lighten(#395799, 30%);
+    }
+
+
   }
 }
