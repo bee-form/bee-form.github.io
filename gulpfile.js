@@ -69,12 +69,17 @@ gulp.task("clean-deploy", () => {
 
 const deployDir = __dirname + "/../bee-form.github.io";
 async function doExport() {
-    gulp.src("./dist/**").pipe(gulp.dest(deployDir));
-    gulp.src("./src/content/**").pipe(gulp.dest(deployDir));
-    gulp.src("./src/server/public/assets/**").pipe(gulp.dest(deployDir + "/assets"));
-    gulp.src(["./src/server/public/*.*", "!./src/server/public/index.html"]).pipe(gulp.dest(deployDir));
+    const copyOver = (src, target) => new Promise((resolve, reject) => {
+        gulp.src(src).pipe(gulp.dest(target)).on("end", resolve);
+    });
 
-    await Exporting.doExport(deployDir, "./src/server/public/index.html");
+    await Promise.all([
+        copyOver("./dist/**", deployDir),
+        copyOver("./src/content/**", deployDir),
+        copyOver("./src/server/public/assets/**", deployDir + "/assets"),
+        copyOver(["./src/server/public/*.*", "!./src/server/public/index.html"], deployDir),
+        Exporting.doExport(deployDir, "./src/server/public/index.html"),
+    ]);
 }
 
 gulp.task("test-deploy", ["clean-deploy"], async () => {
