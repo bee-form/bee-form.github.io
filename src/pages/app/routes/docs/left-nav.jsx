@@ -27,6 +27,10 @@ export class LeftNav extends FComponent {
                 name: "api",
                 items: [
                     {
+                        label: "connectForm()",
+                        name: "connect-form",
+                    },
+                    {
                         label: "createForm()",
                         name: "create-form",
                     },

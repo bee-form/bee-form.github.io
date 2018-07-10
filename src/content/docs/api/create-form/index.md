@@ -53,7 +53,7 @@ Now, either no `otherNames` is inputted, or if any `otherNames` is added, each o
 
 ### form.onChange(listener)
 
-`listener` is a function, and it will be invoked any time form's state is changed. React component should add this line to observe form's changes: `form.onChange(() => this.forceUpdate()`
+`listener` is a function, and it will be invoked any time form's state is changed. React component should add this line to observe form's changes: `form.onChange(() => this.forceUpdate()` and re-render accordingly.
 
 ### form.createView()
 
