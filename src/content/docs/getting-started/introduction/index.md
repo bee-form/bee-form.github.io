@@ -77,4 +77,6 @@ export default class HelloWorld extends Component {
 
 ```
 
-Also, if you are familiar with "connect" component approach, then all the samples in the "Examples" page use that approach to create and connect form.
+This sample shows the most basic and native way to create and use Bee Form, however there are 2 other ways which are more "high-level" and you may find the more preferable: using `connectForm(Component, formConfig, initData)` function (similar to Redux `connect()`) or `Form` react component (props: `config` and `initData` ) 
+
+All the samples in the "Examples" page use the `connectForm` approach to create and connect form.
