@@ -76,3 +76,5 @@ export default class HelloWorld extends Component {
 }
 
 ```
+
+Also, if you are familiar with "connect" component approach, then all the samples in the "Examples" page use that approach to create and connect form.
