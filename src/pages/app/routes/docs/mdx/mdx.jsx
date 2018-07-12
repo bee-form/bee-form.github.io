@@ -1,4 +1,3 @@
-import cln from "classnames";
 import React from "react";
 import {FComponent} from "../../../../common/f-component";
 import marked from "marked";
