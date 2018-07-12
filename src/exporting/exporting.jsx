@@ -53,7 +53,7 @@ const applyHtmlC = (indexHtml) => (html, cached_gets) =>  {
 };
 
 async function listDocPaths() {
-    let docsAbs = Path.resolve(`${__dirname}/../content/docs`);
+    let docsAbs = Path.resolve(`${__dirname}/../pages/app/routes/docs/content/docs`);
     return await glob(`${docsAbs}/**/index.md`).map((p) =>
         p.substring(docsAbs.length + 1).replace(/\/index\.md$/, "")
     );

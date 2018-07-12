@@ -1,4 +1,3 @@
-const bodyParser = require("body-parser");
 const express = require("express");
 
 const ServerCore = {
@@ -8,7 +7,7 @@ const ServerCore = {
 
         app.use(express.static(__dirname + "/public"));
         app.use(express.static(__dirname + "/../../dist"));
-        app.use(express.static(__dirname + "/../content"));
+        app.use("/docs", express.static(__dirname + "/../pages/app/routes/docs/content"));
 
         app.get("/docs/*", (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 

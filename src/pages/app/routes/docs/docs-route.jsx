@@ -5,6 +5,7 @@ import {docApi} from "../../../common/api/doc-api";
 import {DocsLayout} from "./layout/docs-layout";
 import marked from "marked";
 import {LeftNav} from "./left-nav";
+import {Mdx} from "./mdx/mdx";
 
 export class DocsRoute extends FComponent {
 
@@ -42,8 +43,18 @@ export class DocsRoute extends FComponent {
                     />
                 }
                 content={
-                    content &&
-                    <div dangerouslySetInnerHTML={{__html: marked(content)}} />
+                    content && (
+                        <Mdx
+                            template={content}
+                            components={{
+                                "aa": () => (
+                                    <div className="">
+                                        awoufhof weoifweog we
+                                    </div>
+                                )
+                            }}
+                        />
+                    )
                 }
             />
         );
