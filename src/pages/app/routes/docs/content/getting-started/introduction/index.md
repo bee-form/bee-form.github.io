@@ -39,7 +39,8 @@ your component is unmounted.
 
 Here is the full source code:
 
-```
+!!jsx
+``` jsx harmony
 import React, {Component} from 'react';
 import {createForm, basicValidators: {required}} from "bee-form-react";
 

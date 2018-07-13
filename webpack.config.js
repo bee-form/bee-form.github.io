@@ -33,6 +33,7 @@ module.exports = {
             "react-dom": path.resolve(__dirname, 'src/build/webpack-alias/webpack-alias-react-dom.js'),
             "react-router": path.resolve(__dirname, 'src/build/webpack-alias/webpack-alias-react-router.js'),
             "react-router-dom": path.resolve(__dirname, 'src/build/webpack-alias/webpack-alias-react-router-dom.js'),
+            "highlight.js": path.resolve(__dirname, 'src/build/webpack-alias/webpack-alias-highlight.js'),
         },
     },
 };

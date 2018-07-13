@@ -6,6 +6,7 @@ import {DocsLayout} from "./layout/docs-layout";
 import marked from "marked";
 import {LeftNav} from "./left-nav";
 import {Mdx} from "./mdx/mdx";
+import {HighlightJSX} from "./highlight/highlight";
 
 export class DocsRoute extends FComponent {
 
@@ -47,11 +48,18 @@ export class DocsRoute extends FComponent {
                         <Mdx
                             template={content}
                             components={{
-                                "aa": () => (
-                                    <div className="">
-                                        awoufhof weoifweog we
-                                    </div>
-                                )
+                                "jsx": (content) => {
+
+                                    const m1 = /```(.+?)\r?\n/.exec(content);
+                                    const start = m1.index + m1[0].length;
+                                    const end = content.indexOf("```", start);
+                                    return ({
+                                        length: end + 3,
+                                        jsx: (
+                                            <HighlightJSX code={content.substring(start, end)}/>
+                                        )
+                                    });
+                                }
                             }}
                         />
                     )
