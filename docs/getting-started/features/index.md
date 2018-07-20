@@ -7,6 +7,7 @@ This is a quick introduction of Bee Form's features
 Async validation is commonly used in forms today, and Bee Form has native, first-class support for it.
 
 For example, assume we have a mock api:
+!!jsx
 ```
 function validateName(name) {
     return new Promise((resolve, reject) => {
@@ -18,6 +19,7 @@ function validateName(name) {
 ```
 
 Now we wire it up to form's rules:
+!!jsx
 ```
 this.form = createForm({
     "name": [required, {name: "async", validate: validateName}],
@@ -31,7 +33,7 @@ And that's it, name will have error and block form's submit unless user type in 
 Debounce is also a very common in any place that async validation happens to save round trips to server while user is still typing
 
 To add debounce to your field "name", you will need to first extend it's declaration to the full format (from `[required, {name: ...}]`, into `{ validators: [required... ], }`), then add debounce value to it:
-
+!!jsx
 ```
 this.form = createForm({
     "name": {
@@ -50,12 +52,13 @@ This requirement can often leads to a lot of coding problem if it's not natively
 Bee Form natively support parsing/formatting, when a field has parsing error, form will be marked as invalid and user will have to fix it before submitting. Bee Form uses a new term: `tunnel` for parsing/formatting. A tunnel will have both methods for parsing and formatting value. Parsing is used to convert user's raw input (view) value into data's format, and formatting is used to format data into user's expected view format.
 
 To add parsing/formatting to your form's field, add this import (a sample tunnel to parse/format number values):
-
+!!jsx
 ```
-import {intNumber} from "bee-form/basic-tunnels";
+import {intNumber} from "bee-form-react/tunnels";
 ```
 
 And configured it into the form: note that the rule for name here is also extended and `tunnel` is declared in place of `debounce` in the previous sample
+!!jsx
 ```
 this.form = createForm({
     "age": {
@@ -71,6 +74,7 @@ Please also note that Bee Form has support for mapping 2 user's input into 1 for
 
 Lists is also a very common requirement in forms these days. In Bee Form, we are proud to provide a very intuitive and simple API to handle lists
 
+!!jsx
 ```
 this.form = createForm({
     "children[*].name": [required],
@@ -79,6 +83,7 @@ this.form = createForm({
 
 And in render:
 
+!!jsx
 ```
 { fv.map("children", (childFv, i) => (
     <div key={i}>

@@ -19,6 +19,7 @@ To start using Bee Form, you don't have to change any code outside of the compon
 
 Add this code to your constructor, it declares form's rules and form's initial data:
 
+!!jsx
 ```
 this.form = createForm({
     "name": [required],
@@ -28,6 +29,8 @@ this.form.onChange(() => this.forceUpdate());
 ```
 
 And this to your render method:
+
+!!jsx
 ```
 const fv = this.form.createView();
 ```
@@ -39,43 +42,7 @@ your component is unmounted.
 
 Here is the full source code:
 
-```
-import React, {Component} from 'react';
-import {createForm, basicValidators: {required}} from "bee-form-react";
-
-export default class HelloWorld extends Component {
-
-    constructor(props, context) {
-        super(props, context);
-
-        this.form = createForm({
-            "name": [required],
-        }, {name: "World"});
-
-        this.form.onChange(() => this.forceUpdate());
-    }
-
-    render() {
-        const fv = this.form.createView();
-
-        return (
-            <div className="first-bee-form">
-
-                <div className="">
-                    <input
-                        {... fv.bind("name")}
-                    />
-                </div>
-
-                <div className="">
-                    Hello {fv.getValue("name")}
-                </div>
-            </div>
-        );
-    }
-}
-
-```
+!!demo: sample1.jsx
 
 This sample shows the most basic and native way to create and use Bee Form, however there are 2 other ways which are more "high-level" and you may find the more preferable: using `connectForm(Component, formConfig, initData)` function (similar to Redux `connect()`) or `Form` react component (props: `config` and `initData` ) 
 

@@ -10,60 +10,71 @@
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">-->
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+    <link href="/assets/vendor/hljs-styles/androidstudio.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.1/umd/react.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.1/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.3.1/react-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
+    <script src="/assets/vendor/highlight.pack.js"></script>
 </head>
 <body>
-<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="fixed"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div></div><div class="content docs-layout"><div class="main"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section active"><a class="title" href="/docs/getting-started/introduction/">Getting started</a><div class="items"><a class="item" href="/docs/getting-started/introduction/">Introduction</a><a class="item active" href="/docs/getting-started/features/">Features</a><a class="item" href="/docs/getting-started/architecture/">Architecture</a></div></div><div class="section"><a class="title" href="/docs/api/connect-form/">API</a></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="features">Features</h1>
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="fixed"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div></div><div class="content docs-layout"><div class="main"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section active"><a class="title" href="/docs/getting-started/introduction/">Getting started</a><div class="items"><a class="item" href="/docs/getting-started/introduction/">Introduction</a><a class="item active" href="/docs/getting-started/features/">Features</a><a class="item" href="/docs/getting-started/architecture/">Architecture</a></div></div><div class="section"><a class="title" href="/docs/api/create-by-3-ways/">API</a></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="features">Features</h1>
 <p>This is a quick introduction of Bee Form&#39;s features</p>
 <h2 id="async-validation">Async validation</h2>
 <p>Async validation is commonly used in forms today, and Bee Form has native, first-class support for it.</p>
 <p>For example, assume we have a mock api:</p>
-<pre><code>function validateName(name) {
+</div><pre><code>function validateName(name) {
     return new Promise((resolve, reject) =&gt; {
         setTimeout(() =&gt; {
             resolve(name === &quot;Q&quot;);
         }, 600);
     });
-}</code></pre><p>Now we wire it up to form&#39;s rules:</p>
-<pre><code>this.form = createForm({
+}
+</code></pre><div><p>Now we wire it up to form&#39;s rules:</p>
+</div><pre><code>this.form = createForm({
     &quot;name&quot;: [required, {name: &quot;async&quot;, validate: validateName}],
-});</code></pre><p>And that&#39;s it, name will have error and block form&#39;s submit unless user type in &quot;Q&quot; for it.</p>
+});
+</code></pre><div><p>And that&#39;s it, name will have error and block form&#39;s submit unless user type in &quot;Q&quot; for it.</p>
 <h2 id="debounce-before-validation">Debounce before validation</h2>
 <p>Debounce is also a very common in any place that async validation happens to save round trips to server while user is still typing</p>
 <p>To add debounce to your field &quot;name&quot;, you will need to first extend it&#39;s declaration to the full format (from <code>[required, {name: ...}]</code>, into <code>{ validators: [required... ], }</code>), then add debounce value to it:</p>
-<pre><code>this.form = createForm({
+</div><pre><code>this.form = createForm({
     &quot;name&quot;: {
         validators: [required, {name: &quot;async&quot;, validate: validateName}],
         debounce: 400,
     },
-});</code></pre><h2 id="parse-format-value">Parse/format value</h2>
+});
+</code></pre><div><h2 id="parse-format-value">Parse/format value</h2>
 <p>Another common requirement that often happen to forms is parsing user&#39;s input value into form&#39;s data. This often happens to date or number values but can also be Json or any server&#39;s specific data format (like instead of using date string or timestamp, server wants <code>{year: 2018, month: ...}</code>)</p>
 <p>This requirement can often leads to a lot of coding problem if it&#39;s not natively supported the form engine, for example, if user is still in process of typing in the date value (<code>11-2</code>), if form engine does not detect it and does not block submitting, it can easily leads user to misunderstand that all his/her inputs are correct and submit the form with unwanted values.</p>
 <p>Bee Form natively support parsing/formatting, when a field has parsing error, form will be marked as invalid and user will have to fix it before submitting. Bee Form uses a new term: <code>tunnel</code> for parsing/formatting. A tunnel will have both methods for parsing and formatting value. Parsing is used to convert user&#39;s raw input (view) value into data&#39;s format, and formatting is used to format data into user&#39;s expected view format.</p>
 <p>To add parsing/formatting to your form&#39;s field, add this import (a sample tunnel to parse/format number values):</p>
-<pre><code>import {intNumber} from &quot;bee-form/basic-tunnels&quot;;</code></pre><p>And configured it into the form: note that the rule for name here is also extended and <code>tunnel</code> is declared in place of <code>debounce</code> in the previous sample</p>
-<pre><code>this.form = createForm({
+</div><pre><code>import {intNumber} from &quot;bee-form-react/tunnels&quot;;
+</code></pre><div><p>And configured it into the form: note that the rule for name here is also extended and <code>tunnel</code> is declared in place of <code>debounce</code> in the previous sample</p>
+</div><pre><code>this.form = createForm({
     &quot;age&quot;: {
         validators: [required],
         tunnel: [intNumber],
     },
-});</code></pre><p>Please also note that Bee Form has support for mapping 2 user&#39;s input into 1 form&#39;s value, like in case of date input and time input. This is done with the &quot;Faces&quot; feature, and has an example for using both Tunnel and Faces in the <a href="https://bee-form.github.io/bee-form-react-demo/">Examples section</a></p>
+});
+</code></pre><div><p>Please also note that Bee Form has support for mapping 2 user&#39;s input into 1 form&#39;s value, like in case of date input and time input. This is done with the &quot;Faces&quot; feature, and has an example for using both Tunnel and Faces in the <a href="https://bee-form.github.io/bee-form-react-demo/">Examples section</a></p>
 <h2 id="handle-lists">Handle lists</h2>
 <p>Lists is also a very common requirement in forms these days. In Bee Form, we are proud to provide a very intuitive and simple API to handle lists</p>
-<pre><code>this.form = createForm({
+</div><pre><code>this.form = createForm({
     &quot;children[*].name&quot;: [required],
-});</code></pre><p>And in render:</p>
-<pre><code>{ fv.map(&quot;children&quot;, (childFv, i) =&gt; (
+});
+</code></pre><div><p>And in render:</p>
+</div><pre><code>{ fv.map(&quot;children&quot;, (childFv, i) =&gt; (
     &lt;div key={i}&gt;
         &lt;input {... childFv.bind(&quot;name&quot;)} /&gt;
     &lt;/div&gt;
-)) }</code></pre><p>Just that, no need for any extra component. The &quot;childFv&quot; is a version of &quot;fv&quot; (Form View), which is scoped down to handle only the child&#39;s data, and any method that you use in &quot;fv&quot; is also available in &quot;childFv&quot; (bind, map, scope, getData, getValue, isValid...) only that invoking them will have effect from the child&#39;s data downward.</p>
+)) }
+</code></pre><div><p>Just that, no need for any extra component. The &quot;childFv&quot; is a version of &quot;fv&quot; (Form View), which is scoped down to handle only the child&#39;s data, and any method that you use in &quot;fv&quot; is also available in &quot;childFv&quot; (bind, map, scope, getData, getValue, isValid...) only that invoking them will have effect from the child&#39;s data downward.</p>
 <p>Scoping down is a common technique used in Bee Form, to provide a powerful yet simple and safe way to handle form controls. Other methods that use &quot;scoping down&quot;: <code>fv.scope(&quot;path&quot;)</code> and <code>fv.withControl(&quot;path&quot;, (childFv) =&gt; (...))</code></p>
 </div></div><div class="right-panel"></div></div></div></div></div>
 

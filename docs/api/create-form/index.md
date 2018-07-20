@@ -1,13 +1,15 @@
-# Create form
+# createForm() 
 
 ## API:
 
+!!jsx
 ```
 createForm(formConfig, [initialData]) : Form
 ```
 
 This is a sample configuration to create a register form
 
+!!jsx
 ```
 createForm({
     "name": [required, nameFormat],

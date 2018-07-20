@@ -10,22 +10,26 @@
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">-->
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+    <link href="/assets/vendor/hljs-styles/androidstudio.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.1/umd/react.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.1/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.3.1/react-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
+    <script src="/assets/vendor/highlight.pack.js"></script>
 </head>
 <body>
-<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="fixed"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div></div><div class="content docs-layout"><div class="main"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section active"><a class="title" href="/docs/api/connect-form/">API</a><div class="items"><a class="item" href="/docs/api/connect-form/">connectForm()</a><a class="item" href="/docs/api/create-form/">createForm()</a><a class="item" href="/docs/api/form-view/">Form view</a><a class="item" href="/docs/api/config-condition/">Config condition</a><a class="item" href="/docs/api/validator/">Validator</a><a class="item active" href="/docs/api/tunnel/">Tunnel</a></div></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="tunnel">Tunnel</h1>
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="fixed"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div></div><div class="content docs-layout"><div class="main"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section active"><a class="title" href="/docs/api/create-by-3-ways/">API</a><div class="items"><a class="item" href="/docs/api/create-by-3-ways/">Create by 3 ways</a><a class="item" href="/docs/api/connect-form/">connectForm()</a><a class="item" href="/docs/api/create-form/">createForm()</a><a class="item" href="/docs/api/form-view/">Form view</a><a class="item" href="/docs/api/config-condition/">Config condition</a><a class="item" href="/docs/api/validator/">Validator</a><a class="item active" href="/docs/api/tunnel/">Tunnel</a></div></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="tunnel">Tunnel</h1>
 <p>A tunnel is the way Bee Form parse user&#39;s input value into form&#39;s storage format, and format form&#39;s value back to user&#39;s view format.</p>
 <p>A tunnel can have either <code>parse</code> or <code>format</code> methods, or both of them.</p>
 <p>A field (or field&#39;s face) can have multiple tunnels, when it has more than 1 tunnel, parsing will be applied from first tunnel to last tunnel in list, but formatting will be applied in REVERSED order, from last to first.</p>
 <p>A tunnel&#39;s <code>parse</code> method can throw an exception during parsing, to indicate that user&#39;s inputted value can not be parsed into form&#39;s expected format. In such case, Bee Form will keep user&#39;s input value (so he/she can continue typing/editing it) however, the field will be marked as invalid, and the error name is &quot;@parse&quot;, and the whole form will be invalid, so user is acknowledged of the parse error and would not submit form unless he/she fix it. This feature differentiate Bee Form from most form engine out there which may show user error in that field locally, but would let user submit the whole form while error is not solved, thus unwanted value is sent and saved to server.</p>
 <p>This is a sample tunnel:</p>
-<pre><code>const toInt = {
+</div><pre><code>const toInt = {
     parse: (strValue) =&gt; parseInt(strValue),
     format: (intValue) =&gt; &quot;&quot; + intValue,
 };
@@ -35,7 +39,8 @@ createForm({
         tunnel: [toInt],
     },
 });
-</code></pre></div></div><div class="right-panel"></div></div></div></div></div>
+
+</code></pre></div><div class="right-panel"></div></div></div></div></div>
 
 <script>window.cached_gets = ["/docs/api/tunnel/index.md"]</script>
 
