@@ -14,9 +14,9 @@ The `connectForm()` method is more succinct, and it resembles the HoC way that m
 
 !!demo: sample_connectForm.jsx
 
-## 3. The <Form/> component method
+## 3. The Form component method
 
-The <Form/> component method is the shortest way of 3, and it 
+The `<Form/>` component method is both succinct and pure React. You can choose to use `render` props or `children`, whichever suits your taste.
 
 !!demo: sample_Form_component.jsx
 

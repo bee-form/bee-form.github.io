@@ -12,7 +12,7 @@ For example, assume we have a mock api:
 function validateName(name) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(name === "Q");
+            resolve(name === "bee");
         }, 600);
     });
 }
@@ -21,12 +21,14 @@ function validateName(name) {
 Now we wire it up to form's rules:
 !!jsx
 ```
-this.form = createForm({
+const formConfig = {
     "name": [required, {name: "async", validate: validateName}],
-});
+};
 ```
 
-And that's it, name will have error and block form's submit unless user type in "Q" for it.
+And that's it, name will have error and block form's submit unless user type in "bee" for it.
+
+!!demo: sample_async.jsx collapsed
 
 ## Debounce before validation
 
@@ -42,6 +44,10 @@ this.form = createForm({
     },
 });
 ```
+
+!!demo: sample_async_debounce.jsx collapsed
+
+Note that if you change focus (blur the input), debounced value will be applied immediately.
 
 ## Parse/format value
 

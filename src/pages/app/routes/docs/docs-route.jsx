@@ -47,6 +47,7 @@ export class DocsRoute extends FComponent {
         const mdxComponents = O.map(staticMdxComponents, (f) => f(docLocation));
         return (
             <Mdx
+                key={docLocation}
                 template={content}
                 components={mdxComponents}
             />
