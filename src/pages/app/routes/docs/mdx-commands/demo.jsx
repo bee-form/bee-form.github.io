@@ -6,14 +6,15 @@ const samples = {
 };
 
 export const demo = (docLocation) => (content, args) => {
+    const demo = samples[docLocation] && samples[docLocation][args];
     return {
         length: 0,
-        jsx: (
+        jsx: demo && (
             <div className="">
-                <HighlightJSX code={samples[docLocation][args].content}/>
+                <HighlightJSX code={demo.content}/>
 
                 <div className="">
-                    {samples[docLocation][args].demo()}
+                    {demo.demo()}
                 </div>
             </div>
         ),

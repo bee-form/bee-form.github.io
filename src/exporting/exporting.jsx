@@ -13,7 +13,8 @@ const Path = require("path");
 async function renderComponent(component, path) {
 
     let cacher = Cacher.createCacher((path) => {
-        return fs.readFileAsync(`${__dirname}/../content${path}`, "utf8");
+        // console.log(path)
+        return fs.readFileAsync(`${__dirname}/../pages/app/routes/docs/content${path.replace(/^\/docs/, "")}`, "utf8");
     });
 
     let html = await AsyncResolve.asyncResolve({
@@ -53,7 +54,7 @@ const applyHtmlC = (indexHtml) => (html, cached_gets) =>  {
 };
 
 async function listDocPaths() {
-    let docsAbs = Path.resolve(`${__dirname}/../pages/app/routes/docs/content/docs`);
+    let docsAbs = Path.resolve(`${__dirname}/../pages/app/routes/docs/content`);
     return await glob(`${docsAbs}/**/index.md`).map((p) =>
         p.substring(docsAbs.length + 1).replace(/\/index\.md$/, "")
     );

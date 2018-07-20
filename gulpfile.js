@@ -1,5 +1,6 @@
 require("jsx-node").install();
 global.h = require("react").createElement;
+require("./src/build/node-raw-loader").install();
 
 const gulp = require("gulp");
 const clean = require('gulp-clean');
@@ -68,14 +69,14 @@ gulp.task("clean-deploy", () => {
 
 const deployDir = __dirname + "/../bee-form.github.io";
 async function doExport() {
+    const {Exporting} = require("./src/exporting/exporting.jsx");
     const copyOver = (src, target) => new Promise((resolve, reject) => {
         gulp.src(src).pipe(gulp.dest(target)).on("end", resolve);
     });
-    const Exporting = require("./src/exporting/exporting.jsx").Exporting;
 
     await Promise.all([
         copyOver("./dist/**", deployDir),
-        copyOver("./src/content/**", deployDir),
+        copyOver("./src/pages/app/routes/docs/content/**/*.md", deployDir + "/docs"),
         copyOver("./src/server/public/assets/**", deployDir + "/assets"),
         copyOver(["./src/server/public/*.*", "!./src/server/public/index.html"], deployDir),
         Exporting.doExport(deployDir, "./src/server/public/index.html"),
