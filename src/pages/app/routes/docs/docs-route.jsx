@@ -23,15 +23,34 @@ export class DocsRoute extends FComponent {
             content: null,
             loading: true,
         };
-        docApi.getDoc(getDocLocation(props.location.pathname)).then((content) => this.setState({content, loading: false}));
+
+        const docLocation = getDocLocation(props.location.pathname);
+        docApi.getDoc(docLocation).then((content) => this.setState({
+            content: this.renderContent(content, docLocation),
+            loading: false
+        }));
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.location.pathname !== this.props.location.pathname) {
             this.setState({loading: true});
 
-            docApi.getDoc(getDocLocation(this.props.location.pathname)).then((content) => this.setState({content, loading: false}));
+            const docLocation = getDocLocation(this.props.location.pathname);
+            docApi.getDoc(docLocation).then((content) => this.setState({
+                content: this.renderContent(content, docLocation),
+                loading: false
+            }));
         }
+    }
+
+    renderContent(content, docLocation) {
+        const mdxComponents = O.map(staticMdxComponents, (f) => f(docLocation));
+        return (
+            <Mdx
+                template={content}
+                components={mdxComponents}
+            />
+        );
     }
 
     render() {
@@ -39,7 +58,6 @@ export class DocsRoute extends FComponent {
         const {location} = this.props;
         const docLocation = getDocLocation(location.pathname);
 
-        const mdxComponents = O.map(staticMdxComponents, (f) => f(docLocation));
         return (
             <DocsLayout
                 className="docs-route"
@@ -51,14 +69,7 @@ export class DocsRoute extends FComponent {
                         })()}
                     />
                 }
-                content={
-                    content && (
-                        <Mdx
-                            template={content}
-                            components={mdxComponents}
-                        />
-                    )
-                }
+                content={content}
             />
         );
     }

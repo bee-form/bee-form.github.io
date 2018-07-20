@@ -1,7 +1,6 @@
 import React from "react";
 import {FComponent} from "../../../../common/f-component";
 import marked from "marked";
-import {RegexUtil} from "../../../../common/utils/regex-util";
 
 export class Mdx extends FComponent {
 
@@ -16,7 +15,7 @@ export class Mdx extends FComponent {
                     throw `[ERROR] Can't locate component "${name}"`;
                 }
 
-                return component(content, extra.replace(/^:\s*/,"").trim());
+                return component(content, extra.replace(/^\s*:\s*/,"").trim());
             },
         );
     }

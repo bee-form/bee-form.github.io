@@ -27,6 +27,9 @@ export class LeftNav extends FComponent {
                 name: "api",
                 items: [
                     {
+                        name: "create-by-3-ways",
+                    },
+                    {
                         label: "connectForm()",
                         name: "connect-form",
                     },
