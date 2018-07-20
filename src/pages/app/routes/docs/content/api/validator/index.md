@@ -22,6 +22,7 @@ Validate method can also return a promise indicating an async API call is being 
 
 This is a sample validator:
 
+!!jsx
 ```
 const largerThan5 = {
     name: "larger-than-5",

@@ -30,6 +30,7 @@ Note that the newValue here is "view value", which means if this path has any tu
 
 `bind` method is the convenient method for React's inputs (value, onChange...) that internally invoke `fv.getValue([path])` and `fv.pushValue([path])`. The returned object should be similar to this:
 
+!!jsx
 ```
 {
     value: getValue(path),
@@ -64,18 +65,21 @@ Return a scoped down version of this form view, associated with data from `path`
 
 For example:
 
+!!jsx
 ```
 fv.bind("student[0].name")
 ```
 
 will be equal to
 
+!!jsx
 ```
 fv.scope("student[0]").bind("name")
 ```
 
 or
 
+!!jsx
 ```
 fv.scope("student[0].name").bind()
 ```
@@ -97,6 +101,7 @@ Basically, it is the same to: `fn(fv.scope(path))`, but provides a cleaner looki
 
 For example:
 
+!!jsx
 ```
 {fv.withControl("name", ({bind}) => (
     <input {...bind()} />
@@ -104,6 +109,8 @@ For example:
 ```
 
 Instead of:
+
+!!jsx
 ```
 (({bind}) => (
     <input {...bind()} />

@@ -2,6 +2,7 @@
 
 `connectForm()` is a convenient method, using HoC to provide form view into React component. This resembles Redux's `connect()` method.
 
+!!jsx
 ```
 const formConfig = {
     "name": [required],

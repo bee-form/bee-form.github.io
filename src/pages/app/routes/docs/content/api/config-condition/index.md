@@ -4,6 +4,7 @@ In case your form has multiple sections, and some of them is may be disabled and
 
 For example:
 
+!!jsx
 ```
 import {createForm, condition, ...} from "bee-form-react";
 
