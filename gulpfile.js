@@ -3,7 +3,6 @@ global.h = require("react").createElement;
 
 const gulp = require("gulp");
 const clean = require('gulp-clean');
-const Exporting = require("./src/exporting/exporting.jsx").Exporting;
 const spawn = require('child_process').spawn;
 
 function createStylusCompiler() {
@@ -72,6 +71,7 @@ async function doExport() {
     const copyOver = (src, target) => new Promise((resolve, reject) => {
         gulp.src(src).pipe(gulp.dest(target)).on("end", resolve);
     });
+    const Exporting = require("./src/exporting/exporting.jsx").Exporting;
 
     await Promise.all([
         copyOver("./dist/**", deployDir),

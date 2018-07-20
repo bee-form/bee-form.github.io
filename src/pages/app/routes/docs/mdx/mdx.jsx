@@ -10,13 +10,13 @@ export class Mdx extends FComponent {
 
         return parse(template,
             (md) => <div dangerouslySetInnerHTML={{__html: marked(md)}} />,
-            (name, content) => {
+            (name, content, extra) => {
                 const component = components[name];
                 if (!component) {
                     throw `[ERROR] Can't locate component "${name}"`;
                 }
 
-                return component(content);
+                return component(content, extra.replace(/^:\s*/,"").trim());
             },
         );
     }
@@ -26,7 +26,7 @@ const parse = (template, withContent, withComponent) => {
     let list = [];
 
     for (;;) {
-        const match = /!!(\w+)/.exec(template);
+        const match = /!!(\w+)(.*?)\r?\n/.exec(template);
 
         if (!match) {
             break;
@@ -37,7 +37,7 @@ const parse = (template, withContent, withComponent) => {
         }
         template = template.substring(match.index + match[0].length);
 
-        const result = withComponent(match[1], template);
+        const result = withComponent(match[1], template, match[2]);
         list.push(result.jsx);
 
         template = template.substring(result.length);

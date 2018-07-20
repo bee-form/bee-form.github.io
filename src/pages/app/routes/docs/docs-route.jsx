@@ -1,12 +1,18 @@
 import cln from "classnames";
 import React from "react";
 import {FComponent} from "../../../common/f-component";
+import {O} from "../../../common/utils/object-util";
 import {docApi} from "../../../common/api/doc-api";
 import {DocsLayout} from "./layout/docs-layout";
-import marked from "marked";
 import {LeftNav} from "./left-nav";
 import {Mdx} from "./mdx/mdx";
-import {HighlightJSX} from "./highlight/highlight";
+import {jsx} from "./mdx-commands/jsx";
+import {demo} from "./mdx-commands/demo";
+
+const staticMdxComponents = {
+    jsx,
+    demo,
+};
 
 export class DocsRoute extends FComponent {
 
@@ -31,14 +37,16 @@ export class DocsRoute extends FComponent {
     render() {
         const {content} = this.state;
         const {location} = this.props;
+        const docLocation = getDocLocation(location.pathname);
 
+        const mdxComponents = O.map(staticMdxComponents, (f) => f(docLocation));
         return (
             <DocsLayout
                 className="docs-route"
                 leftNav={
                     <LeftNav
                         active={(() => {
-                            const [section, item] = getDocLocation(location.pathname).split("/").slice(1);
+                            const [section, item] = docLocation.split("/").slice(1);
                             return {section, item};
                         })()}
                     />
@@ -47,20 +55,7 @@ export class DocsRoute extends FComponent {
                     content && (
                         <Mdx
                             template={content}
-                            components={{
-                                "jsx": (content) => {
-
-                                    const m1 = /```(.+?)\r?\n/.exec(content);
-                                    const start = m1.index + m1[0].length;
-                                    const end = content.indexOf("```", start);
-                                    return ({
-                                        length: end + 3,
-                                        jsx: (
-                                            <HighlightJSX code={content.substring(start, end)}/>
-                                        )
-                                    });
-                                }
-                            }}
+                            components={mdxComponents}
                         />
                     )
                 }

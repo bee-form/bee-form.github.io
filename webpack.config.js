@@ -15,12 +15,30 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                exclude: /node_modules/,
+
+                exclude: (input) => {
+                    if (input.indexOf("node_modules/") > -1) {
+                        return true;
+                    }
+                    return input.indexOf("bee-form/") > -1 || input.indexOf("bee-form-react/") > -1;
+                },
                 loader: 'babel-loader',
                 options: {
                     cacheDirectory: true,
                     presets: ['env', 'stage-0', "react"],
                 }
+
+            },
+            {
+                test: /\.txt$/,
+
+                // exclude: (input) => {
+                //     if (input.indexOf("node_modules/") > -1) {
+                //         return true;
+                //     }
+                //     return input.indexOf("bee-form/") > -1 || input.indexOf("bee-form-react/") > -1;
+                // },
+                loader: 'raw-loader',
 
             },
         ],
