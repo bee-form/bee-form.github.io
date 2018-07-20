@@ -52,6 +52,14 @@ export class LeftNav extends FComponent {
                 ],
             },
             {
+                name: "validators",
+                items: [
+                    {
+                        name: "introduction",
+                    },
+                ],
+            },
+            {
                 label: "FAQ",
                 name: "faq",
                 directLink: true,
