@@ -22,7 +22,6 @@ export class Mdx extends FComponent {
 }
 
 const parse = (template, withContent, withComponent) => {
-    // return null;
     let list = [];
     for (;;) {
         const match = /!!(\w+)(.*?)\r?\n/.exec(template);

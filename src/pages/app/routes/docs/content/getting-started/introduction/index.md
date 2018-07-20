@@ -19,6 +19,7 @@ To start using Bee Form, you don't have to change any code outside of the compon
 
 Add this code to your constructor, it declares form's rules and form's initial data:
 
+!!jsx
 ```
 this.form = createForm({
     "name": [required],
@@ -28,6 +29,8 @@ this.form.onChange(() => this.forceUpdate());
 ```
 
 And this to your render method:
+
+!!jsx
 ```
 const fv = this.form.createView();
 ```

@@ -13,7 +13,7 @@ export const demo = (docLocation) => (content, args) => {
             <div className="">
                 <HighlightJSX code={demo.content}/>
 
-                <div className="">
+                <div className="demo">
                     {demo.demo()}
                 </div>
             </div>
