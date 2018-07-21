@@ -23,11 +23,11 @@
     <script src="/assets/vendor/highlight.pack.js"></script>
 </head>
 <body>
-<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="fixed"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div></div><div class="content docs-layout"><div class="main"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section active"><a class="title" href="/docs/api/create-by-3-ways/">API</a><div class="items"><a class="item active" href="/docs/api/create-by-3-ways/">Create by 3 ways</a><a class="item" href="/docs/api/connect-form/">connectForm()</a><a class="item" href="/docs/api/create-form/">createForm()</a><a class="item" href="/docs/api/form-view/">Form view</a><a class="item" href="/docs/api/config-condition/">Config condition</a><a class="item" href="/docs/api/validator/">Validator</a><a class="item" href="/docs/api/tunnel/">Tunnel</a></div></div><div class="section"><a class="title" href="/docs/validators/introduction/">Validators</a></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="3-ways-to-create-form">3 ways to create form</h1>
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="fixed"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div></div><div class="content docs-layout"><div class="main"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section active"><a class="title" href="/docs/api/create-by-3-ways/">API</a><div class="items"><a class="item active" href="/docs/api/create-by-3-ways/">Create by 3 ways</a><a class="item" href="/docs/api/connect-form/">connectForm()</a><a class="item" href="/docs/api/create-form/">createForm()</a><a class="item" href="/docs/api/form-view/">Form view</a><a class="item" href="/docs/api/config-condition/">Config condition</a><a class="item" href="/docs/api/validator/">Validator</a><a class="item" href="/docs/api/tunnel/">Tunnel</a></div></div><div class="section"><a class="title" href="/docs/validators/introduction/">Validators</a></div><div class="section"><a class="title" href="/docs/guide/basic-components/">Guide</a></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="3-ways-to-create-form">3 ways to create form</h1>
 <p>There are 3 ways to create a Bee Form: using createForm() method, using connectForm() method (HoC), and using <Form/> component. Each with its own pros and cons, so you may choose the best that suit your needs.</p>
 <h2 id="1-the-createform-method">1. The createForm() method</h2>
 <p>The <code>createForm()</code> method is the most verbose way among the 3, and it uses <code>forceUpdate()</code> which some of you may not like, however, it provides full control over the created form, and also demonstrate the &quot;light-weight&quot; nature of the core form engine.</p>
-</div><div class=""><pre><code>import React, {Component} from &#x27;react&#x27;;
+</div><pre><code>import React, {Component} from &#x27;react&#x27;;
 import {createForm} from &quot;bee-form-react&quot;;
 import {required} from &quot;bee-form-react/validators&quot;;
 
@@ -63,9 +63,9 @@ export default class CreateForm extends Component {
         );
     }
 }
-</code></pre><div class="demo"><div class="sample-create-form"><div class=""><input value="" placeholder="Your name..."/></div><div class="">Hello <!-- -->there<!-- -->.</div></div></div></div><div><h2 id="2-the-connectform-method">2. The connectForm() method</h2>
+</code></pre><div class="demo"><div class="sample-create-form"><div class=""><input value="" placeholder="Your name..."/></div><div class="">Hello <!-- -->there<!-- -->.</div></div></div><div><h2 id="2-the-connectform-method">2. The connectForm() method</h2>
 <p>The <code>connectForm()</code> method is more succinct, and it resembles the HoC way that many people are familiar with, so you would probably like to use it the most </p>
-</div><div class=""><pre><code>import React, {Component} from &#x27;react&#x27;;
+</div><pre><code>import React, {Component} from &#x27;react&#x27;;
 import {connectForm} from &quot;bee-form-react&quot;;
 import {required} from &quot;bee-form-react/validators&quot;;
 
@@ -89,9 +89,9 @@ const ConnectForm = ({fv}) =&gt; (
     &lt;/div&gt;
 );
 
-export default connectForm(ConnectForm, formConfig);</code></pre><div class="demo"><div class="sample-create-form"><div class=""><input value="" placeholder="Your name..."/></div><div class="">Hello <!-- -->there<!-- -->.</div></div></div></div><div><h2 id="3-the-form-component-method">3. The Form component method</h2>
+export default connectForm(ConnectForm, formConfig);</code></pre><div class="demo"><div class="sample-create-form"><div class=""><input value="" placeholder="Your name..."/></div><div class="">Hello <!-- -->there<!-- -->.</div></div></div><div><h2 id="3-the-form-component-method">3. The Form component method</h2>
 <p>The <code>&lt;Form/&gt;</code> component method is both succinct and pure React. You can choose to use <code>render</code> props or <code>children</code>, whichever suits your taste.</p>
-</div><div class=""><pre><code>import React, {Component} from &#x27;react&#x27;;
+</div><pre><code>import React, {Component} from &#x27;react&#x27;;
 import {Form} from &quot;bee-form-react&quot;;
 import {required} from &quot;bee-form-react/validators&quot;;
 
@@ -118,9 +118,9 @@ export default () =&gt; (
             &lt;/div&gt;
         )}
     /&gt;
-);</code></pre><div class="demo"><div class="sample-create-form"><div class=""><input value="" placeholder="Your name..."/></div><div class="">Hello <!-- -->there<!-- -->.</div></div></div></div><div></div></div><div class="right-panel"></div></div></div></div></div>
+);</code></pre><div class="demo"><div class="sample-create-form"><div class=""><input value="" placeholder="Your name..."/></div><div class="">Hello <!-- -->there<!-- -->.</div></div></div><div></div></div><div class="right-panel"></div></div></div></div></div>
 
-<script>window.cached_gets = ["/docs/api/create-by-3-ways/index.md"]</script>
+<script>window.cached_gets = ["/docs/api/create-by-3-ways/index.md","/docs/api/create-by-3-ways/samples/sample_createForm.jsx","/docs/api/create-by-3-ways/samples/sample_connectForm.jsx","/docs/api/create-by-3-ways/samples/sample_Form_component.jsx"]</script>
 
 <script async defer src="js/loader.js"></script>
 

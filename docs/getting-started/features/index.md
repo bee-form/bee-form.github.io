@@ -28,7 +28,7 @@ const formConfig = {
 
 And that's it, name will have error and block form's submit unless user type in "bee" for it.
 
-!!demo: sample_async.jsx collapsed
+!!demo-collapsed: sample_async.jsx
 
 ## Debounce before validation
 
@@ -45,7 +45,7 @@ this.form = createForm({
 });
 ```
 
-!!demo: sample_async_debounce.jsx collapsed
+!!demo-collapsed: sample_async_debounce.jsx
 
 Note that if you change focus (blur the input), debounced value will be applied immediately.
 
