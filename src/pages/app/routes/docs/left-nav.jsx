@@ -60,6 +60,14 @@ export class LeftNav extends FComponent {
                 ],
             },
             {
+                name: "guide",
+                items: [
+                    {
+                        name: "basic-components",
+                    },
+                ],
+            },
+            {
                 label: "FAQ",
                 name: "faq",
                 directLink: true,
