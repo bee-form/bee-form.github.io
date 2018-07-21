@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "dev": "gulp dev",
+    "test-deploy": "gulp test-deploy",
     "deploy-push": "gulp deploy-push"
   },
   "repository": {
