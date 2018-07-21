@@ -1,4 +1,4 @@
-import {quickForm} from "./quick-form";
+import {quickForm} from "../../../../common/quick-form";
 
 module.exports = {
     "sample_checkbox.jsx": quickForm(require("./sample_checkbox.jsx")),

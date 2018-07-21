@@ -52,6 +52,14 @@ export class LeftNav extends FComponent {
                 ],
             },
             {
+                name: "guide",
+                items: [
+                    {
+                        name: "basic-components",
+                    },
+                ],
+            },
+            {
                 name: "validators",
                 items: [
                     {
@@ -60,10 +68,10 @@ export class LeftNav extends FComponent {
                 ],
             },
             {
-                name: "guide",
+                name: "tunnels",
                 items: [
                     {
-                        name: "basic-components",
+                        name: "introduction",
                     },
                 ],
             },

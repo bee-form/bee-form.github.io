@@ -3,7 +3,7 @@ const snippet = (content, name) => {
     if (match == null) {
         return `[Error]: Can not find snippet ${name}`;
     }
-    return match[2].replace(new RegExp(`^${match[1]}`, "gm"), "");
+    return match[2].replace(new RegExp(`^${match[1]}`, "gm"), "").trim();
 };
 
 exports.snippet = snippet;

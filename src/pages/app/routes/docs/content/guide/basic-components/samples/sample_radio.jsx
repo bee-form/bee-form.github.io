@@ -1,8 +1,8 @@
 import React from "react";
 
-export default (fv) => (
+export const render = (fv) => (
     <div>
-        {/* #content */}
+        {/* #render */}
         <input type="radio" id="one" {...fv.bindRadio("picked", "One")}/>
         <label htmlFor="one">One</label>
         <br/>
@@ -10,6 +10,6 @@ export default (fv) => (
         <label htmlFor="two">Two</label>
         <br/>
         <span>Picked: {fv.getValue("picked")}</span>
-        {/* #content end */}
+        {/* #render end */}
     </div>
 );

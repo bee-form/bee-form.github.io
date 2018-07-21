@@ -1,8 +1,8 @@
 import React from "react";
 
-export default (fv) => (
+export const render = (fv) => (
     <div>
-        {/* #content */}
+        {/* #render */}
         <input type="checkbox" id="jack" {...fv.bindCheckboxes("checkedNames", "Jack")}/>
         <label htmlFor="jack">Jack</label>
         <input type="checkbox" id="john" {...fv.bindCheckboxes("checkedNames", "John")}/>
@@ -11,6 +11,6 @@ export default (fv) => (
         <label htmlFor="mike">Mike</label>
         <br/>
         <span>Checked names: {JSON.stringify(fv.getValue("checkedNames"))}</span>
-        {/* #content end */}
+        {/* #render end */}
     </div>
 );
