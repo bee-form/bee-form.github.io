@@ -1,11 +1,11 @@
 import cln from "classnames";
-import React from "react";
+import React, {Fragment} from "react";
 import {FComponent} from "../../../common/f-component";
 import {O} from "../../../common/utils/object-util";
 import {docApi} from "../../../common/api/doc-api";
 import {DocsLayout} from "./layout/docs-layout";
 import {LeftNav} from "./left-nav";
-import {Mdx} from "./mdx/mdx";
+import {parseMdx} from "./mdx/mdx";
 import {jsx} from "./mdx-commands/jsx";
 import {demo} from "./mdx-commands/demo";
 
@@ -46,11 +46,11 @@ export class DocsRoute extends FComponent {
     renderContent(content, docLocation) {
         const mdxComponents = O.map(staticMdxComponents, (f) => f(docLocation));
         return (
-            <Mdx
+            <Fragment
                 key={docLocation}
-                template={content}
-                components={mdxComponents}
-            />
+            >
+                {parseMdx(content, mdxComponents)}
+            </Fragment>
         );
     }
 

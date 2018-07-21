@@ -1,25 +1,26 @@
-import React from "react";
-import {FComponent} from "../../../../common/f-component";
-import marked from "marked";
+const React = require("react");
+const marked = require("marked");
 
-export class Mdx extends FComponent {
+const parseMdx = (template, components) => {
 
-    render() {
-        const {template, components} = this.props;
+    return parse(template,
+        (md) => (
+            React.createElement("div", {
+                dangerouslySetInnerHTML: {__html: marked(md)},
+            })
+        ),
+        (name, content, extra) => {
+            const component = components[name];
+            if (!component) {
+                throw `[ERROR] Can't locate component "${name}"`;
+            }
 
-        return parse(template,
-            (md) => <div dangerouslySetInnerHTML={{__html: marked(md)}} />,
-            (name, content, extra) => {
-                const component = components[name];
-                if (!component) {
-                    throw `[ERROR] Can't locate component "${name}"`;
-                }
+            return component(content, extra.replace(/^\s*:\s*/,"").trim());
+        },
+    );
+};
 
-                return component(content, extra.replace(/^\s*:\s*/,"").trim());
-            },
-        );
-    }
-}
+exports.parseMdx = parseMdx;
 
 const parse = (template, withContent, withComponent) => {
     let list = [];
