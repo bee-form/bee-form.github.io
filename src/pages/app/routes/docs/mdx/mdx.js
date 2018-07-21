@@ -25,7 +25,7 @@ exports.parseMdx = parseMdx;
 const parse = (template, withContent, withComponent) => {
     let list = [];
     for (;;) {
-        const match = /!!(\w+)(.*?)\r?\n/.exec(template);
+        const match = /!!([\w-]+)(.*?)\r?\n/.exec(template);
 
         if (!match) {
             break;

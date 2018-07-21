@@ -1,6 +1,5 @@
 require("jsx-node").install();
 global.h = require("react").createElement;
-require("./src/build/node-raw-loader").install();
 
 const gulp = require("gulp");
 const clean = require('gulp-clean');

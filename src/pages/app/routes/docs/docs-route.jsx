@@ -9,11 +9,13 @@ import {parseMdx} from "./mdx/mdx";
 import {jsx} from "./mdx-commands/jsx";
 import {demo} from "./mdx-commands/demo";
 import {code} from "./mdx-commands/code";
+import {demoCollapsed} from "./mdx-commands/demo-collapsed";
 
 const staticMdxComponents = {
     jsx,
     demo,
     code,
+    "demo-collapsed": demoCollapsed,
 };
 
 export class DocsRoute extends FComponent {
