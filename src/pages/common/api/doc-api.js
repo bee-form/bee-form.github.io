@@ -6,6 +6,9 @@ const docApi = {
             .replace(/\/$/, "/index.md")
         }`);
     },
+    getSampleCode(path, name) {
+        return fetcher.get(`/docs${path}samples/${name}`);
+    },
 };
 
 exports.docApi = docApi;

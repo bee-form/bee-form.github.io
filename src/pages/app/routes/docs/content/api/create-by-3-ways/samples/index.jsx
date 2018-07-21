@@ -1,16 +1,7 @@
 const {runDefault} = require("../../../../common/jsx-run-default");
 
 module.exports = {
-    "sample_createForm.jsx": {
-        demo: runDefault(require("./sample_createForm.jsx")),
-        content: require("!raw-loader!./sample_createForm.jsx"),
-    },
-    "sample_connectForm.jsx": {
-        demo: runDefault(require("./sample_connectForm.jsx")),
-        content: require("!raw-loader!./sample_connectForm.jsx"),
-    },
-    "sample_Form_component.jsx": {
-        demo: runDefault(require("./sample_Form_component.jsx")),
-        content: require("!raw-loader!./sample_Form_component.jsx"),
-    },
+    "sample_createForm.jsx": runDefault(require("./sample_createForm.jsx")),
+    "sample_connectForm.jsx": runDefault(require("./sample_connectForm.jsx")),
+    "sample_Form_component.jsx": runDefault(require("./sample_Form_component.jsx")),
 };

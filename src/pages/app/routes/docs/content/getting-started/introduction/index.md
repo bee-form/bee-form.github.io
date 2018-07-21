@@ -42,6 +42,7 @@ your component is unmounted.
 
 Here is the full source code:
 
+!!code: sample1.jsx
 !!demo: sample1.jsx
 
 This sample shows the most basic and native way to create and use Bee Form, however there are 2 other ways which are more "high-level" and you may find the more preferable: using `connectForm(Component, formConfig, initData)` function (similar to Redux `connect()`) or `Form` react component (props: `config` and `initData` ) 

@@ -8,10 +8,12 @@ import {LeftNav} from "./left-nav";
 import {parseMdx} from "./mdx/mdx";
 import {jsx} from "./mdx-commands/jsx";
 import {demo} from "./mdx-commands/demo";
+import {code} from "./mdx-commands/code";
 
 const staticMdxComponents = {
     jsx,
     demo,
+    code,
 };
 
 export class DocsRoute extends FComponent {

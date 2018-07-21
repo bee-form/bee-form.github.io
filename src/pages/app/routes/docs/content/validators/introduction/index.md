@@ -6,4 +6,5 @@ Although writing a custom validator is easy with Bee Form, the package "bee-form
 
 Name: "required"
 
+!!code: sample_required.jsx #content
 !!demo: sample_required.jsx
