@@ -12,5 +12,11 @@
 !!code: sample_int.jsx #render
 !!demo: sample_int.jsx
 
+### Trim
+
+!!code: sample_trim.jsx #config
+!!code: sample_trim.jsx #render
+!!demo: sample_trim.jsx
+
 
 
