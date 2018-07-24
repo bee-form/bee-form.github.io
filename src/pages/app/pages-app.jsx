@@ -1,4 +1,3 @@
-import classnames from "classnames";
 import {FComponent} from "../common/f-component";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import {HomeRoute} from "./routes/home/home-route";
@@ -11,7 +10,7 @@ export class PagesApp extends FComponent {
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/' component={HomeRoute}/>
-                    <Route path='/docs/' component={DocsRoute}/>
+                    <Route exact path='/docs/' component={DocsRoute}/>
                     <Route path='/docs/*' component={DocsRoute}/>
                 </Switch>
             </BrowserRouter>

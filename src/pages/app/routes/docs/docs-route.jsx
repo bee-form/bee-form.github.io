@@ -22,17 +22,19 @@ export class DocsRoute extends FComponent {
 
     constructor(props, context) {
         super(props, context);
-
         this.state = {
             content: null,
             loading: true,
         };
 
         const docLocation = getDocLocation(props.location.pathname);
-        docApi.getDoc(docLocation).then((content) => this.setState({
-            content: this.renderContent(content, docLocation),
-            loading: false
-        }));
+
+        docApi.getDoc(docLocation).then((content) => {
+            return this.setState({
+                content: this.renderContent(content, docLocation),
+                loading: false
+            });
+        });
     }
 
     componentDidUpdate(prevProps) {

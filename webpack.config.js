@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
     cache: true,
     // devtool: "eval",
-    entry: ["./src/pages/loader.jsx"],
+    entry: [require.resolve("./src/build/polyfills"), "./src/pages/loader.jsx"],
     output: {
         path: `${__dirname}/dist/js`,
         filename: "loader.js"
@@ -17,17 +17,19 @@ module.exports = {
                 test: /\.jsx?$/,
 
                 exclude: (input) => {
-                    if (input.indexOf("node_modules/") > -1) {
-                        return true;
-                    }
-                    return input.indexOf("bee-form/") > -1 || input.indexOf("bee-form-react/") > -1;
+                    return input.indexOf("node_modules/") > -1;
+
+                    // return input.indexOf("bee-form/") > -1 || input.indexOf("bee-form-react/") > -1;
                 },
                 loader: 'babel-loader',
                 options: {
                     cacheDirectory: true,
-                    presets: ['env', 'stage-0', "react"],
+                    presets: [
+                        require('babel-preset-env'),
+                        require('babel-preset-stage-0'),
+                        require("babel-preset-react")
+                    ],
                 }
-
             },
         ],
     },

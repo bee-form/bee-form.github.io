@@ -12,7 +12,6 @@ let cachedGets = window.cached_gets;
 delete window.cached_gets;
 
 AsyncUtil.resolveToMap(cachedGets, fetcher.get).then((cachedGets) => {
-
     apiConfig.setFetcher(CachedFetcher.createCachedFetcher(
         fetcher,
         cachedGets

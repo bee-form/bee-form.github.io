@@ -12,7 +12,8 @@ const parseMdx = (template, components) => {
         (name, content, extra) => {
             const component = components[name];
             if (!component) {
-                throw `[ERROR] Can't locate component "${name}"`;
+                console.error(`[ERROR] Can't locate component "${name}"`);
+                return {length: 0};
             }
 
             return component(content, extra.replace(/^\s*:\s*/,"").trim());
@@ -36,8 +37,11 @@ const parse = (template, withContent, withComponent) => {
         }
         template = template.substring(match.index + match[0].length);
 
+        // const result = {length: 0};
         const result = withComponent(match[1], template, match[2]);
-        list.push(result.jsx);
+        if (result.jsx) {
+            list.push(result.jsx);
+        }
 
         template = template.substring(result.length);
     }

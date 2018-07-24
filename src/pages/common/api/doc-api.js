@@ -1,10 +1,9 @@
 const fetcher = require("./api").fetcher;
 const docApi = {
     getDoc(path) {
-        return fetcher.get(`/docs/${path
-            .replace(/^\//, "")
-            .replace(/\/$/, "/index.md")
-        }`);
+        const url = `/docs/${path.replace(/^\//, "").replace(/\/$/, "/index.md")}`;
+
+        return fetcher.get(url);
     },
     getSampleCode(path, name) {
         return fetcher.get(`/docs${path}samples/${name}`);
