@@ -1,8 +1,8 @@
 import React from "react";
 
-export default (fv) => (
+export const render = (fv) => (
     <div>
-        {/* #content */}
+        {/* #render */}
         <select {...fv.bindMultipleSelect("selected")} multiple style={{width: 50}}>
             <option>A</option>
             <option>B</option>
@@ -10,6 +10,6 @@ export default (fv) => (
         </select>
         <br/>
         <span>Selected: {JSON.stringify(fv.getValue("selected"))}</span>
-        {/* #content end */}
+        {/* #render end */}
     </div>
 );
