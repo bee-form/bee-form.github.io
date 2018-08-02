@@ -52,11 +52,10 @@ export class LeftNav extends FComponent {
                 ],
             },
             {
-                name: "guide",
+                name: "examples",
                 items: [
-                    {
-                        name: "basic-components",
-                    },
+                    { name: "basic-components", },
+                    { name: "wizard-form", },
                 ],
             },
             {
