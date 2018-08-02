@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {createForm} from "bee-form-react";
-import {required} from "bee-form-react/validators";
+import {required} from "bee-form-validators";
 
 export default class CreateForm extends Component {
 

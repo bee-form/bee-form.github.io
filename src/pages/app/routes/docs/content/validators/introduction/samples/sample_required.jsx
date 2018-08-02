@@ -1,5 +1,5 @@
 // #content
-import {required} from "bee-form-react/validators";
+import {required} from "bee-form-validators";
 
 const formConfig = ({
     "name": [required],

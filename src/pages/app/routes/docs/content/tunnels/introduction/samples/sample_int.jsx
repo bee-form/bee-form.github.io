@@ -1,5 +1,5 @@
 // #config
-import {intNumber} from "bee-form-react/tunnels";
+import {intNumber} from "bee-form-tunnels";
 
 const formConfig = {
     "content": {

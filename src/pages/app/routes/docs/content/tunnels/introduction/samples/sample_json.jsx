@@ -1,5 +1,5 @@
 // #config
-import {json} from "bee-form-react/tunnels";
+import {json} from "bee-form-tunnels";
 
 const formConfig = {
     "content": {

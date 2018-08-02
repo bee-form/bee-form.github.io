@@ -60,7 +60,7 @@ Bee Form natively support parsing/formatting, when a field has parsing error, fo
 To add parsing/formatting to your form's field, add this import (a sample tunnel to parse/format number values):
 !!jsx
 ```
-import {intNumber} from "bee-form-react/tunnels";
+import {intNumber} from "bee-form-tunnels";
 ```
 
 And configured it into the form: note that the rule for name here is also extended and `tunnel` is declared in place of `debounce` in the previous sample
