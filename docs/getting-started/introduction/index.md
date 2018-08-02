@@ -1,6 +1,6 @@
 # Introduction
 
-Bee Form is a sophisticated forming system, capable of handling the most complicated form requirements. On top 
+Bee Form is a sophisticated form system, capable of handling the most complicated form requirements. On top 
 of that, is a very simple, light-weight, function based API.
 
 
