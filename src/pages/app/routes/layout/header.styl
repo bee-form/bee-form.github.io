@@ -1,116 +1,107 @@
 .layout > .header {
+  @media screen and (min-width: 768px) {
+    position sticky;
+    top 0;
+    height 64px;
+  }
 
-  //@media screen and (min-width: 768px) {
-  //  height 64px;
-  //}
+  padding-top 10px;
+  @media screen and (min-width: 768px) {
+    padding-top 21px;
+  }
+  letter-spacing 1px;
+  background orange3;
+  box-shadow 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+  z-index 1;
 
-  & > .fixed {
-    @media screen and (min-width: 768px) {
-      position fixed;
-      top 0;
-      left 0;
-      width 100%;
-      height 64px;
-    }
+  .line {
+    position relative;
+    max-width 1170px;
+    margin 0 auto;
 
-    padding-top 10px;
-    @media screen and (min-width: 768px) {
-      padding-top 21px;
-    }
-    letter-spacing 1px;
-    background orange3;
-    box-shadow 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
-    z-index 1;
+    padding-bottom 12px;
 
-    .line {
+    .left {
+      line-height 21px;
       position relative;
-      max-width 1170px;
-      margin 0 auto;
+      text-align center;
 
-      padding-bottom 12px;
+      @media screen and (min-width: 768px) {
+        padding-left 67px;
+        text-align left;
+      }
 
-      .left {
-        line-height 21px;
-        position relative;
-        text-align center;
+      .icon-wrapper {
+        padding-bottom 13px;
 
         @media screen and (min-width: 768px) {
-          padding-left 67px;
-          text-align left;
+          position absolute;
+          top: -8px;
+          left 13px;
+          //padding-bottom 0;
         }
 
-        .icon-wrapper {
-          padding-bottom 13px;
-
-          @media screen and (min-width: 768px) {
-            position absolute;
-            top: -8px;
-            left 13px;
-            //padding-bottom 0;
-          }
-
-          .icon {
-            display inline-block;
-
-            letter-spacing 1px;
-
-            font-weight 100;
-            font-size 22px;
-            line-height 36px;
-            text-align center;
-            border 1px solid white;
-            border-radius 6px;
-            width 36px;
-            height 36px;
-            color white;
-          }
-        }
-
-        .nav-item {
+        .icon {
           display inline-block;
-          font-size 14px;
 
-          margin-right 15px;
-          cursor pointer;
-          color rgba(white, 0.7);
+          letter-spacing 1px;
 
-          font-weight 300;
-
-          @media screen and (min-width: 768px) {
-            font-weight 500;
-          }
-
-          &:hover, &.active {
-            color white;
-          }
-
-          &.active {
-            cursor default;
-          }
+          font-weight 100;
+          font-size 22px;
+          line-height 36px;
+          text-align center;
+          border 1px solid white;
+          border-radius 6px;
+          width 36px;
+          height 36px;
+          color white;
         }
       }
 
-      .right {
-        position absolute;
-        right 13px;
-        top 0;
+      .nav-item {
+        display inline-block;
+        font-size 14px;
 
-        display none;
+        margin-right 15px;
+        cursor pointer;
+        color rgba(white, 0.7);
+
+        font-weight 300;
 
         @media screen and (min-width: 768px) {
-          display block;
+          font-weight 500;
         }
 
-        a {
-          font-size 17px;
-          cursor pointer;
-          color rgba(white, 0.7);
-
-          &:hover {
-            color white;
-          }
-
+        &:hover, &.active {
+          color white;
         }
+
+        &.active {
+          cursor default;
+        }
+      }
+    }
+
+    .right {
+      position absolute;
+      right 13px;
+      top 0;
+
+      display none;
+
+      @media screen and (min-width: 768px) {
+        display block;
+      }
+
+      a {
+        font-size 17px;
+        cursor pointer;
+        color rgba(white, 0.7);
+
+        &:hover {
+          color white;
+        }
+
       }
     }
   }

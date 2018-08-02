@@ -1,44 +1,35 @@
 .docs-layout {
-  height 100%;
-  & > .main {
-    max-width 1170px;
-    margin 0 auto;
-    position relative;
-    height 100%;
+  display: flex;
+  flex-wrap: nowrap;
+
+  & > .nav-panel {
 
     @media screen and (min-width: 768px) {
-      padding-left 30%;
+      position: sticky;
+      top: 64px;
+      height calc(100vh - 64px);
+      flex: 0 1 30%;
+
+      padding-top 15px;
+
+      border-right 1px solid rgba(0,0,0,.1);
     }
     @media screen and (min-width: 1050px) {
-      padding-left 20%;
+      flex: 0 1 20%;
     }
+  }
+  & > .content {
+    flex: 1 0;
 
-    & > .nav-panel {
+    padding 15px;
+  }
+  & > .right-panel {
 
-      @media screen and (min-width: 768px) {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 30%;
-        height 100%;
-
-        padding-top 15px;
-
-        border-right 1px solid rgba(0,0,0,.1);
-      }
-      @media screen and (min-width: 1050px) {
-        width: 20%;
-      }
-    }
-    & > .content {
-      max-height 100%;
-      overflow-y auto;
-      -webkit-overflow-scrolling: touch;
-
-      padding 15px;
-    }
-    & > .right-panel {
-
+    @media screen and (min-width: 1050px) {
+      position: sticky;
+      top: 64px;
+      height calc(100vh - 64px);
+      flex: 0 1 17%;
     }
   }
 }

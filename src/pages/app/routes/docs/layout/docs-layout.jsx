@@ -11,16 +11,13 @@ export class DocsLayout extends FComponent {
         return (
             <Layout active="docs" className="docs-layout">
 
-                <div className="main">
+                <NavPanel content={leftNav}/>
 
-                    <NavPanel content={leftNav}/>
-
-                    <div className={cln("content", className)}>
-                        {content}
-                    </div>
-                    <div className="right-panel">
-                        {rightNav}
-                    </div>
+                <div className={cln("content", className)}>
+                    {content}
+                </div>
+                <div className="right-panel">
+                    {rightNav}
                 </div>
             </Layout>
         );
