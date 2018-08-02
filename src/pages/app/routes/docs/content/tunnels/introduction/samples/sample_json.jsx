@@ -11,7 +11,7 @@ const formConfig = {
 exports.formConfig = formConfig;
 
 export const render = (fv) => (
-    <div className="">
+    <div>
         {/* #render */}
 
         <textarea {...fv.bind("content")} />

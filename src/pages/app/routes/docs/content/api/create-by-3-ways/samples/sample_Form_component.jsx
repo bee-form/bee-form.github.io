@@ -12,14 +12,14 @@ export default () => (
         render={(fv) => (
             <div className="sample-create-form">
 
-                <div className="">
+                <div>
                     <input
                         {... fv.bind("name")}
                         placeholder="Your name..."
                     />
                 </div>
 
-                <div className="">
+                <div>
                     Hello {fv.getValue("name") || "there"}.
                 </div>
             </div>

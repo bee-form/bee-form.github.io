@@ -21,7 +21,7 @@ export default () => (
             fv.withControl("name", ({bind, withError}) => (
                 <div className="sample">
 
-                    <div className="">
+                    <div>
                         <input
                             {... bind()}
                             placeholder="Your name..."
