@@ -14,9 +14,9 @@
 
 ### Trim
 
-!!code: sample_airline.jsx #config
-!!code: sample_airline.jsx #render
-!!demo: sample_airline.jsx
+!!code: sample_trim.jsx #config
+!!code: sample_trim.jsx #render
+!!demo: sample_trim.jsx
 
 
 
