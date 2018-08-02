@@ -23,8 +23,8 @@
     <script src="/assets/vendor/highlight.pack.js"></script>
 </head>
 <body>
-<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="fixed"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div></div><div class="content docs-layout"><div class="main"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section"><a class="title" href="/docs/api/create-by-3-ways/">API</a></div><div class="section"><a class="title" href="/docs/guide/basic-components/">Guide</a></div><div class="section"><a class="title" href="/docs/validators/introduction/">Validators</a></div><div class="section active"><a class="title" href="/docs/tunnels/introduction/">Tunnels</a><div class="items"><a class="item active" href="/docs/tunnels/introduction/">Introduction</a></div></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h3 id="json">JSON</h3>
-</div><pre><code>import {json} from &quot;bee-form-react/tunnels&quot;;
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div><div class="content docs-layout"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section"><a class="title" href="/docs/api/create-by-3-ways/">API</a></div><div class="section"><a class="title" href="/docs/examples/basic-components/">Examples</a></div><div class="section"><a class="title" href="/docs/validators/introduction/">Validators</a></div><div class="section active"><a class="title" href="/docs/tunnels/introduction/">Tunnels</a><div class="items"><a class="item active" href="/docs/tunnels/introduction/">Introduction</a></div></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h3 id="json">JSON</h3>
+</div><pre><code>import {json} from &quot;bee-form-tunnels&quot;;
 
 const formConfig = {
     &quot;content&quot;: {
@@ -32,8 +32,8 @@ const formConfig = {
     },
 };</code></pre><pre><code>&lt;textarea {...fv.bind(&quot;content&quot;)} /&gt;
 
-&lt;pre&gt;{JSON.stringify(fv.getData())}&lt;/pre&gt;</code></pre><div class="demo"><div class=""><textarea></textarea><pre></pre></div></div><div><h3 id="integer-number">Integer number</h3>
-</div><pre><code>import {intNumber} from &quot;bee-form-react/tunnels&quot;;
+&lt;pre&gt;{JSON.stringify(fv.getData())}&lt;/pre&gt;</code></pre><div class="demo"><div><textarea></textarea><pre></pre></div></div><div><h3 id="integer-number">Integer number</h3>
+</div><pre><code>import {intNumber} from &quot;bee-form-tunnels&quot;;
 
 const formConfig = {
     &quot;content&quot;: {
@@ -41,8 +41,8 @@ const formConfig = {
     },
 };</code></pre><pre><code>&lt;input {...fv.bind(&quot;content&quot;)} /&gt;
 
-&lt;pre&gt;{JSON.stringify(fv.getData())}&lt;/pre&gt;</code></pre><div class="demo"><div class=""><input value=""/><pre></pre></div></div><div><h3 id="trim">Trim</h3>
-</div><pre><code>import {trim} from &quot;bee-form-react/tunnels&quot;;
+&lt;pre&gt;{JSON.stringify(fv.getData())}&lt;/pre&gt;</code></pre><div class="demo"><div><input value=""/><pre></pre></div></div><div><h3 id="trim">Trim</h3>
+</div><pre><code>import {trim} from &quot;bee-form-tunnels&quot;;
 
 const formConfig = {
     &quot;content&quot;: {
@@ -50,7 +50,7 @@ const formConfig = {
     },
 };</code></pre><pre><code>&lt;textarea {...fv.bind(&quot;content&quot;)} /&gt;
 
-&lt;pre&gt;{JSON.stringify(fv.getData())}&lt;/pre&gt;</code></pre><div class="demo"><div class=""><textarea></textarea><pre></pre></div></div><div></div></div><div class="right-panel"></div></div></div></div></div>
+&lt;pre&gt;{JSON.stringify(fv.getData())}&lt;/pre&gt;</code></pre><div class="demo"><div><textarea></textarea><pre></pre></div></div><div></div></div><div class="right-panel"></div></div></div></div>
 
 <script>window.cached_gets = ["/docs/tunnels/introduction/index.md","/docs/tunnels/introduction/samples/sample_json.jsx","/docs/tunnels/introduction/samples/sample_int.jsx","/docs/tunnels/introduction/samples/sample_trim.jsx"]</script>
 

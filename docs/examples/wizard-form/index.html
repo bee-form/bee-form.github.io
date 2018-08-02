@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <base href="/">
+    <title>Bee Form</title>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">-->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+    <link href="/assets/vendor/hljs-styles/androidstudio.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.1/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.3.1/react-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
+    <script src="/assets/vendor/highlight.pack.js"></script>
+</head>
+<body>
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div><div class="content docs-layout"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section"><a class="title" href="/docs/api/create-by-3-ways/">API</a></div><div class="section active"><a class="title" href="/docs/examples/basic-components/">Examples</a><div class="items"><a class="item" href="/docs/examples/basic-components/">Basic components</a><a class="item active" href="/docs/examples/wizard-form/">Wizard form</a></div></div><div class="section"><a class="title" href="/docs/validators/introduction/">Validators</a></div><div class="section"><a class="title" href="/docs/tunnels/introduction/">Tunnels</a></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="wizard-form-airline-tickets-">Wizard Form (Airline tickets)</h1>
+<p>Wizards are common requirement these days, but these requirements often lead to hazardous code spaghetti if not handled properly. Luckily, Bee-form&#39;s native scoping feature fits very well into these requirements and can help you create complicated wizards very easily. Here is what we need to do:</p>
+<ol>
+<li>Separate your form data into different groups of sub-data, for example, if you are creating an airline booking ticket wizard, you may want to have your data divided into: flight, guests, time, seat_positions, checkout</li>
+<li>Create a form object on the parent component which hold all form data, and have validation for all groups.</li>
+<li>With each step of the wizard, use <code>fv.scope(&quot;...&quot;)</code> method to create a sub-form view to look into that specific group.</li>
+<li>In each step, with the scoped-down form view, you can bind values and check validation. The validation result is also scoped down, which means it will only check for validity of values in that specific group.</li>
+</ol>
+<p>Here is how it works:</p>
+</div>Error: Can not load sample [sample_airline.jsx] in [/examples/wizard-form/]<div></div></div><div class="right-panel"></div></div></div></div>
+
+<script>window.cached_gets = ["/docs/examples/wizard-form/index.md"]</script>
+
+<script src="js/loader.js"></script>
+
+</body>
+</html>

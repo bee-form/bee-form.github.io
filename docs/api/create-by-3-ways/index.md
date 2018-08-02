@@ -23,3 +23,6 @@ The `<Form/>` component method is both succinct and pure React. You can choose t
 !!code: sample_Form_component.jsx
 !!demo: sample_Form_component.jsx
 
+## One last thing...
+
+Please note that there is also a sync-form library which has almost identical API, but with a different/more light-weight way to create form (view). You may want to look at it if you have problem using Bee-form create-form methods.

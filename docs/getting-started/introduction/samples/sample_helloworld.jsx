@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {createForm} from "bee-form-react";
-import {required} from "bee-form-react/validators";
+import {required} from "bee-form-validators";
 
 export default class HelloWorld extends Component {
 
@@ -20,13 +20,13 @@ export default class HelloWorld extends Component {
         return (
             <div className="first-bee-form">
 
-                <div className="">
+                <div>
                     <input
                         {... fv.bind("name")}
                     />
                 </div>
 
-                <div className="">
+                <div>
                     Hello {fv.getValue("name")}
                 </div>
             </div>

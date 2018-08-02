@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Form} from "bee-form-react";
-import {required} from "bee-form-react/validators";
+import {required} from "bee-form-validators";
 
 function validateName(name) {
     return new Promise((resolve, reject) => {
@@ -24,7 +24,7 @@ export default () => (
             fv.withControl("name", ({bind, withError}) => (
                 <div className="sample">
 
-                    <div className="">
+                    <div>
                         <input
                             {... bind()}
                             placeholder="Your name..."

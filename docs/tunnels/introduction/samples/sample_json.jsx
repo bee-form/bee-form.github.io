@@ -1,5 +1,5 @@
 // #config
-import {json} from "bee-form-react/tunnels";
+import {json} from "bee-form-tunnels";
 
 const formConfig = {
     "content": {
@@ -11,7 +11,7 @@ const formConfig = {
 exports.formConfig = formConfig;
 
 export const render = (fv) => (
-    <div className="">
+    <div>
         {/* #render */}
 
         <textarea {...fv.bind("content")} />
