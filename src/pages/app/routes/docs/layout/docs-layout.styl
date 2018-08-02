@@ -1,8 +1,14 @@
 .docs-layout {
   display: flex;
   flex-wrap: nowrap;
+  flex-direction column;
+
+  @media screen and (min-width: 768px) {
+    flex-direction row;
+  }
 
   & > .nav-panel {
+    flex: 0 0 auto;
 
     @media screen and (min-width: 768px) {
       position: sticky;

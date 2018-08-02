@@ -1,6 +1,6 @@
 # 3 ways to create form
 
-There are 3 ways to create a Bee Form: using createForm() method, using connectForm() method (HoC), and using <Form/> component. Each with its own pros and cons, so you may choose the best that suit your needs.
+There are 3 ways to create a Bee Form: using `createForm()` method, using `connectForm()` method (HoC), and using `<Form/>` component. Each with its own pros and cons, so you may choose the best that suit your needs.
 
 ## 1. The createForm() method
 
