@@ -76,7 +76,7 @@ async function doExport() {
     await Promise.all([
         copyOver("./dist/**", deployDir),
         copyOver("./src/pages/app/routes/docs/content/**/*.md", deployDir + "/docs"),
-        copyOver("./src/pages/app/routes/docs/content/**/samples/sample_*.jsx", deployDir + "/docs"),
+        copyOver("./src/pages/app/routes/docs/content/**/samples/*.jsx", deployDir + "/docs"),
         copyOver("./src/server/public/assets/**", deployDir + "/assets"),
         copyOver(["./src/server/public/*.*", "!./src/server/public/index.html"], deployDir),
         Exporting.doExport(deployDir, "./src/server/public/index.html"),
