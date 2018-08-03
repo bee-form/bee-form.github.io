@@ -24,16 +24,52 @@
 </head>
 <body>
 <div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div><div class="content docs-layout"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section"><a class="title" href="/docs/getting-started/introduction/">Getting started</a></div><div class="section"><a class="title" href="/docs/api/create-by-3-ways/">API</a></div><div class="section"><a class="title" href="/docs/examples/basic-components/">Examples</a></div><div class="section active"><a class="title" href="/docs/validators/introduction/">Validators</a><div class="items"><a class="item active" href="/docs/validators/introduction/">Introduction</a></div></div><div class="section"><a class="title" href="/docs/tunnels/introduction/">Tunnels</a></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="validators">Validators</h1>
-<p>Although writing a custom validator is easy with Bee Form, the package &quot;bee-form-react&quot; does include a number of basic validators for your convenience</p>
+<p>Although writing a custom validator is easy with Bee Form, the package &quot;bee-form-validators&quot; does include a number of basic validators for your convenience</p>
 <h2 id="validator-required">Validator: required</h2>
 <p>Name: &quot;required&quot;</p>
+<p>This validator makes sure the field&#39;s value can not be null or empty</p>
 </div><pre><code>import {required} from &quot;bee-form-validators&quot;;
 
 const formConfig = ({
     &quot;name&quot;: [required],
-});</code></pre><div class="demo"><div><input value="" placeholder="Write something..."/><div class="text-error"><span style="text-transform:capitalize">name</span> is <!-- -->required</div></div></div></div><div class="right-panel"></div></div></div></div>
+});</code></pre><div class="demo"><div><input value="" placeholder="Write something..."/><div class="text-error">Name is required</div></div></div><div><h2 id="validator-email">Validator: email</h2>
+<p>Name: &quot;email&quot;</p>
+<p>This validator makes sure the field&#39;s value is of email format. Note that it will accept null or empty values (actually all validators except for required validator will accept null/empty values unless stated other wise)</p>
+</div><pre><code>import {email} from &quot;bee-form-validators&quot;;
 
-<script>window.cached_gets = ["/docs/validators/introduction/index.md","/docs/validators/introduction/samples/sample_required.jsx"]</script>
+const formConfig = ({
+    &quot;email&quot;: [email],
+});</code></pre><div class="demo"><div><input value="" placeholder="Write something..."/></div></div><div><h2 id="validator-phone">Validator: phone</h2>
+<p>Name: &quot;phone&quot;</p>
+<p>This validator makes sure the field&#39;s value is of phone format.</p>
+</div><pre><code>import {phone} from &quot;bee-form-validators&quot;;
+
+const formConfig = ({
+    &quot;phone&quot;: [phone],
+});</code></pre><div class="demo"><div><input value="" placeholder="Write something..."/></div></div><div><h2 id="validator-humanname">Validator: humanName</h2>
+<p>Name: &quot;humanName&quot;</p>
+<p>This validator makes sure the field&#39;s value is of human name format.</p>
+</div><pre><code>import {humanName} from &quot;bee-form-validators&quot;;
+
+const formConfig = ({
+    &quot;first_name&quot;: [humanName],
+});</code></pre><div class="demo"><div><input value="" placeholder="Write something..."/></div></div><div><h2 id="validator-maxlength">Validator: maxLength</h2>
+<p>Name: &quot;maxLength&quot;</p>
+<p>This validator makes sure the field&#39;s value will not exceed given length.</p>
+</div><pre><code>import {maxLength} from &quot;bee-form-validators&quot;;
+
+const formConfig = ({
+    &quot;code&quot;: [maxLength(3)],
+});</code></pre><div class="demo"><div><input value="" placeholder="Write something..."/></div></div><div><h2 id="validator-either">Validator: either</h2>
+<p>Name: &quot;either&quot;</p>
+<p>This validator makes sure the field&#39;s value will be either of given values.</p>
+</div><pre><code>import {either} from &quot;bee-form-validators&quot;;
+
+const formConfig = ({
+    &quot;sex&quot;: [either(&quot;male&quot;, &quot;female&quot;, &quot;gay&quot;, &quot;lesbian&quot;)],
+});</code></pre><div class="demo"><div><input value="" placeholder="Write something..."/></div></div><div></div></div><div class="right-panel"></div></div></div></div>
+
+<script>window.cached_gets = ["/docs/validators/introduction/index.md","/docs/validators/introduction/samples/sample-required.jsx","/docs/validators/introduction/samples/sample-phone.jsx","/docs/validators/introduction/samples/sample-email.jsx","/docs/validators/introduction/samples/sample-humanName.jsx","/docs/validators/introduction/samples/sample-maxLength.jsx","/docs/validators/introduction/samples/sample-either.jsx"]</script>
 
 <script>
     window.DEV_QUAN = window.location.search === "?q";
