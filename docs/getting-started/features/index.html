@@ -77,6 +77,15 @@
 )) }
 </code></pre><div><p>Just that, no need for any extra component. The &quot;childFv&quot; is a version of &quot;fv&quot; (Form View), which is scoped down to handle only the child&#39;s data, and any method that you use in &quot;fv&quot; is also available in &quot;childFv&quot; (bind, map, scope, getData, getValue, isValid...) only that invoking them will have effect from the child&#39;s data downward.</p>
 <p>Scoping down is a common technique used in Bee Form, to provide a powerful yet simple and safe way to handle form controls. Other methods that use &quot;scoping down&quot;: <code>fv.scope(&quot;path&quot;)</code> and <code>fv.withControl(&quot;path&quot;, (childFv) =&gt; (...))</code></p>
+<p>// TODO cascading rule</p>
+<h2 id="scoping-sub-form-form-sections-">Scoping (sub-form/form sections)</h2>
+<p>Bee form&#39;s form view object is a recursive data structure, if you data is : <code>{user: {name}, billing: {card}}</code>, you can call <code>fv.scope(&quot;user&quot;)</code> and will have an identical form view structure, the only difference is it&#39;s pointing to <code>user</code> property instead of the root data. The scoping mechanism in Bee form is very powerful, things like validation will be relevance to the scoped-down data only, which mean your scoped down form view may be valid even when the whole form is invalid (it has error in other part of the form).</p>
+<h2 id="field-faces">Field faces</h2>
+<p>Faces is an important feature of Bee form, to put it simple: a form has multiple fields, a field has multiple faces, each face has its own configuration of debounce and tunnel (not validations, as validations are bounded to the whole field).</p>
+<p>Why faces feature is important? Let&#39;s imagine you have a timestamp field, and you will have to separate it into 2 input tags, 1 for date (mm/dd/yyyy) and 1 for time (hh:mm), each of those inputs works independently but is mapped to the same data, each of them will need to have a separated set of tunnel config (to parse/format date or time), that&#39;s why we have 2 faces for the same data field</p>
+<p>Here is the sample:</p>
+<p>// TODO</p>
+<p>For more details, please look at this page</p>
 </div></div><div class="right-panel"></div></div></div></div>
 
 <script>window.cached_gets = ["/docs/getting-started/features/index.md"]</script>
