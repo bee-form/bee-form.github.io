@@ -6,7 +6,6 @@ import {Link} from "react-router-dom";
 export class LeftNav extends FComponent {
 
     render() {
-        // TODO Why need another form lib
         const {active} = this.props;
         const sections = [
             {
@@ -20,6 +19,9 @@ export class LeftNav extends FComponent {
                     },
                     {
                         name: "architecture",
+                    },
+                    {
+                        name: "why-another-form-library",
                     },
                 ],
             },
