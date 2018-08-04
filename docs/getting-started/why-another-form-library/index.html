@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <base href="/">
+    <title>Bee Form</title>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">-->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+    <link href="/assets/vendor/hljs-styles/androidstudio.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.1/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.3.1/react-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
+    <script src="/assets/vendor/highlight.pack.js"></script>
+</head>
+<body>
+<div id="app-container"><div class="layout" data-reactroot=""><div class="header"><div class="line"><div class="left"><div class="icon-wrapper"><div class="icon">BF</div></div><a class="nav-item" href="/">Home</a><a class="nav-item active" href="/docs/getting-started/introduction/">Documentation</a><a class="nav-item" href="https://bee-form.github.io/bee-form-react-demo/">Examples</a></div><div class="right"><a href="https://github.com/bee-form" target="_blank"><i class="fab fa-github"></i></a></div></div></div><div class="content docs-layout"><div class="nav-panel"><div class="mobile-header"><div class="toggle"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="content"><div class="left-nav"><div class="section active"><a class="title" href="/docs/getting-started/introduction/">Getting started</a><div class="items"><a class="item" href="/docs/getting-started/introduction/">Introduction</a><a class="item" href="/docs/getting-started/features/">Features</a><a class="item" href="/docs/getting-started/architecture/">Architecture</a><a class="item active" href="/docs/getting-started/why-another-form-library/">Why another form library</a></div></div><div class="section"><a class="title" href="/docs/api/create-by-3-ways/">API</a></div><div class="section"><a class="title" href="/docs/examples/basic-components/">Examples</a></div><div class="section"><a class="title" href="/docs/validators/introduction/">Validators</a></div><div class="section"><a class="title" href="/docs/tunnels/introduction/">Tunnels</a></div><div class="section"><a class="title" href="/docs/faq/">FAQ</a></div></div></div></div><div class="content docs-route"><div><h1 id="why-another-form-library">Why another form library</h1>
+<p>Because current libraries do not deliver what we need. Form support is a very very complicated matter, and yet, with the lack of native support for Async operations, scoping, parsing/formatting, developers are often left struggling themselves to handle those matters, and workarounds are all around.</p>
+<p>One important part of deciding to use a library is, that library has to be able to take you all the way, or don&#39;t use it at all, because if the library doesn&#39;t support anything, it&#39;s because it&#39;s fundamentally unsuitable for that feature, and you won&#39;t be able to hack and insert that feature in.</p>
+<p>Nowadays, it often a pain to start learning about a form library because of all the complexity it imposes to users and yet, after all the hassles and pain, users end up realising that their required feature is missing and they are totally forced to continue using the lib with their own hacks/workarounds...</p>
+<p>Now, let&#39;s look at some of the most popular libraries we have today and what they have to offer (or lack):</p>
+<h2 id="redux-form-">Redux form:</h2>
+<ul>
+<li>Async validation: limited support, only validate on blur (not on typing) and you will have to explicitly declare fields that need to do async check in <code>asyncBlurFields</code> form property.</li>
+<li>Debounce: Not supported, you will have to manually add debounce support to input&#39;s onChange, and this, of course, does not natively work with other form mechanism. For example, what about user press tab before debouncing has finished, would Redux form&#39;s async validation ends up using old value to send and validate with server?</li>
+<li>Parsing/formating: Limited support, Redux form does have the term &quot;normalising&quot; for this, but it does not handle parse error, that&#39;s why you won&#39;t be able to use normalising to change from string to number, or date, because as soon as you type &quot;12.&quot;, you value will be reset to &quot;12&quot;, and you can&#39;t finish your decimal number.</li>
+<li>Scoping (subform): Limited support: When dividing a form into sub forms, you will have to change validation code, which is not designed to be modulized and the change can be very tedious and discouraging. Also, the subform (FormSection) is not awared of the error of fields inside it, so you won&#39;t be able to validate sections separately.</li>
+</ul>
+<h2 id="formik">Formik</h2>
+<ul>
+<li>Async validation: limited support, I think Formik support for this is even worse than Redux form. The form engine doesn&#39;t do async validation at all, but leave you with a way to change the validated status of the field (<a href="https://gist.github.com/jaredpalmer/a8faaab12bc37e6a160a3c9549664f0b)">https://gist.github.com/jaredpalmer/a8faaab12bc37e6a160a3c9549664f0b)</a>, this leads to numerous problems like: if network is slow, user may click submit before server&#39;s error response arrive, coding for async validation is tedious, error-prone, and less likely to be able to reuse.</li>
+<li>Debounce: Not supported, like Redux form, you will have to do it manually and out of form&#39;s support.</li>
+<li>Parsing/formating: Not supported at all, you will have to do it outside of your form, probably at API level.</li>
+<li>Scoping (subform): I can&#39;t find any document about this. Probably not supported.</li>
+</ul>
+<h2 id="formsy">Formsy</h2>
+<ul>
+<li>Async validation: No support, you will have to do it manually with your form&#39;s data before submit.</li>
+<li>Debounce: Not supported. Again, like above forms.</li>
+<li>Parsing/formating: I can&#39;t find any document about this. Probably not supported.</li>
+<li>Scoping (subform): Not supported, good luck with hacks.</li>
+</ul>
+<h2 id="react-final-form">React final form</h2>
+<ul>
+<li>Async validation: Much better support, yet I don&#39;t think the support is well integrated into core form logic, check out (this example)[<a href="https://codesandbox.io/s/wy7z7q5zx5%5D">https://codesandbox.io/s/wy7z7q5zx5]</a> (from React final form document). The first field name is required and has async validation, if you has value in name field, keep your cursor at name field, but your mouse if at the submit button, press backspace rapidly to remove all name field&#39;s value, and right when you remove them all, use your mouse/trackpad to press submit button, and you will see the empty (undefined) name pass validation and form values are submitted.</li>
+<li>Debounce: Not supported.</li>
+<li>Parsing/formating: Limited support, similar to Redux form.</li>
+<li>Scoping (subform): I can&#39;t find any thing about this, it&#39;s weird because Redux form has some support for this and Erik should have some idea about how important this is for building complicated forms.</li>
+</ul>
+<h2 id="what-does-bee-form-have-to-offer-">What does Bee form have to offer?</h2>
+<ul>
+<li>All features mention above (Async validation, debounce, parse/format, scoping) together with many other features that are not mentioned (array/list data, modulized form configuration...) are natively supported by Bee form. They all fused together, work well with each other to help you successfully/gracefully deal with your complicated form requirements.</li>
+</ul>
+</div></div><div class="right-panel"></div></div></div></div>
+
+<script>window.cached_gets = ["/docs/getting-started/why-another-form-library/index.md"]</script>
+
+<script>
+    window.DEV_QUAN = window.location.search === "?q";
+</script>
+
+<script src="js/loader.js"></script>
+
+</body>
+</html>
