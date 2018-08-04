@@ -101,3 +101,21 @@ And in render:
 Just that, no need for any extra component. The "childFv" is a version of "fv" (Form View), which is scoped down to handle only the child's data, and any method that you use in "fv" is also available in "childFv" (bind, map, scope, getData, getValue, isValid...) only that invoking them will have effect from the child's data downward.
 
 Scoping down is a common technique used in Bee Form, to provide a powerful yet simple and safe way to handle form controls. Other methods that use "scoping down": `fv.scope("path")` and `fv.withControl("path", (childFv) => (...))`
+
+// TODO cascading rule
+
+## Scoping (sub-form/form sections)
+
+Bee form's form view object is a recursive data structure, if you data is : `{user: {name}, billing: {card}}`, you can call `fv.scope("user")` and will have an identical form view structure, the only difference is it's pointing to `user` property instead of the root data. The scoping mechanism in Bee form is very powerful, things like validation will be relevance to the scoped-down data only, which mean your scoped down form view may be valid even when the whole form is invalid (it has error in other part of the form).
+
+## Field faces
+
+Faces is an important feature of Bee form, to put it simple: a form has multiple fields, a field has multiple faces, each face has its own configuration of debounce and tunnel (not validations, as validations are bounded to the whole field).
+
+Why faces feature is important? Let's imagine you have a timestamp field, and you will have to separate it into 2 input tags, 1 for date (mm/dd/yyyy) and 1 for time (hh:mm), each of those inputs works independently but is mapped to the same data, each of them will need to have a separated set of tunnel config (to parse/format date or time), that's why we have 2 faces for the same data field
+
+Here is the sample:
+
+// TODO
+
+For more details, please look at this page
