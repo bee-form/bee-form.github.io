@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 export class LeftNav extends FComponent {
 
     render() {
+        // TODO Why need another form lib
         const {active} = this.props;
         const sections = [
             {
